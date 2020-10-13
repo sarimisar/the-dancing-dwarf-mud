@@ -1,0 +1,22 @@
+﻿  Automatic MOC for target QCodeEditor
+  Automatic RCC for resources/qcodeeditor_resources.qrc
+  Building Custom Rule C:/Users/MARCANTF/Desktop/QT/GIT/QMud/qmudeditor/QCodeEditor/CMakeLists.txt
+  mocs_compilation.cpp
+  QCodeEditor.cpp
+  QLineNumberArea.cpp
+  QCXXHighlighter.cpp
+  QSyntaxStyle.cpp
+  QStyleSyntaxHighlighter.cpp
+  QGLSLCompleter.cpp
+  QGLSLHighlighter.cpp
+  QLanguage.cpp
+  QXMLHighlighter.cpp
+  QJSONHighlighter.cpp
+  QLuaCompleter.cpp
+  QLuaHighlighter.cpp
+  QPythonCompleter.cpp
+  QPythonHighlighter.cpp
+  QFramedTextAttribute.cpp
+  qrc_qcodeeditor_resources.cpp
+  Generating Code...
+  QCodeEditor.vcxproj -> C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\build\Debug\QCodeEditor.lib

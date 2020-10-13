@@ -1,0 +1,494 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|x64">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|x64">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{14A50E4B-7E81-3BB6-9FC6-527CBF79F98D}</ProjectGuid>
+    <WindowsTargetPlatformVersion>10.0.18362.0</WindowsTargetPlatformVersion>
+    <Keyword>Win32Proj</Keyword>
+    <Platform>x64</Platform>
+    <ProjectName>QCodeEditor</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\build\Debug\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">QCodeEditor.dir\Debug\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">QCodeEditor</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.lib</TargetExt>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\build\Release\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">QCodeEditor.dir\Release\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">QCodeEditor</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.lib</TargetExt>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\build\MinSizeRel\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">QCodeEditor.dir\MinSizeRel\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">QCodeEditor</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">.lib</TargetExt>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\build\RelWithDebInfo\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">QCodeEditor.dir\RelWithDebInfo\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">QCodeEditor</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">.lib</TargetExt>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\build\QCodeEditor_autogen\include_Debug;C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\include;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\include;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\include\QtCore;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\.\mkspecs\win32-msvc;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\include\QtWidgets;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\include\QtGui;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\include\QtANGLE;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;QT_CORE_LIB;QT_WIDGETS_LIB;QT_GUI_LIB;CMAKE_INTDIR="Debug";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;QT_CORE_LIB;QT_WIDGETS_LIB;QT_GUI_LIB;CMAKE_INTDIR=\"Debug\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\build\QCodeEditor_autogen\include_Debug;C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\include;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\include;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\include\QtCore;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\.\mkspecs\win32-msvc;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\include\QtWidgets;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\include\QtGui;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\include\QtANGLE;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\build\QCodeEditor_autogen\include_Debug;C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\include;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\include;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\include\QtCore;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\.\mkspecs\win32-msvc;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\include\QtWidgets;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\include\QtGui;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\include\QtANGLE;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <PreBuildEvent>
+      <Message>Automatic MOC for target QCodeEditor</Message>
+      <Command>setlocal
+cd C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\build
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E cmake_autogen C:/Users/MARCANTF/Desktop/QT/GIT/QMud/qmudeditor/QCodeEditor/build/CMakeFiles/QCodeEditor_autogen.dir/AutogenInfo.json Debug
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+    </PreBuildEvent>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\build\QCodeEditor_autogen\include_Release;C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\include;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\include;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\include\QtCore;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\.\mkspecs\win32-msvc;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\include\QtWidgets;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\include\QtGui;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\include\QtANGLE;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;QT_CORE_LIB;QT_NO_DEBUG;QT_WIDGETS_LIB;QT_GUI_LIB;CMAKE_INTDIR="Release";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;QT_CORE_LIB;QT_NO_DEBUG;QT_WIDGETS_LIB;QT_GUI_LIB;CMAKE_INTDIR=\"Release\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\build\QCodeEditor_autogen\include_Release;C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\include;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\include;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\include\QtCore;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\.\mkspecs\win32-msvc;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\include\QtWidgets;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\include\QtGui;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\include\QtANGLE;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\build\QCodeEditor_autogen\include_Release;C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\include;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\include;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\include\QtCore;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\.\mkspecs\win32-msvc;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\include\QtWidgets;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\include\QtGui;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\include\QtANGLE;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <PreBuildEvent>
+      <Message>Automatic MOC for target QCodeEditor</Message>
+      <Command>setlocal
+cd C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\build
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E cmake_autogen C:/Users/MARCANTF/Desktop/QT/GIT/QMud/qmudeditor/QCodeEditor/build/CMakeFiles/QCodeEditor_autogen.dir/AutogenInfo.json Release
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+    </PreBuildEvent>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\build\QCodeEditor_autogen\include_MinSizeRel;C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\include;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\include;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\include\QtCore;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\.\mkspecs\win32-msvc;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\include\QtWidgets;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\include\QtGui;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\include\QtANGLE;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <Optimization>MinSpace</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;QT_CORE_LIB;QT_NO_DEBUG;QT_WIDGETS_LIB;QT_GUI_LIB;CMAKE_INTDIR="MinSizeRel";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;QT_CORE_LIB;QT_NO_DEBUG;QT_WIDGETS_LIB;QT_GUI_LIB;CMAKE_INTDIR=\"MinSizeRel\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\build\QCodeEditor_autogen\include_MinSizeRel;C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\include;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\include;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\include\QtCore;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\.\mkspecs\win32-msvc;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\include\QtWidgets;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\include\QtGui;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\include\QtANGLE;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\build\QCodeEditor_autogen\include_MinSizeRel;C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\include;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\include;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\include\QtCore;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\.\mkspecs\win32-msvc;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\include\QtWidgets;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\include\QtGui;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\include\QtANGLE;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <PreBuildEvent>
+      <Message>Automatic MOC for target QCodeEditor</Message>
+      <Command>setlocal
+cd C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\build
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E cmake_autogen C:/Users/MARCANTF/Desktop/QT/GIT/QMud/qmudeditor/QCodeEditor/build/CMakeFiles/QCodeEditor_autogen.dir/AutogenInfo.json MinSizeRel
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+    </PreBuildEvent>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\build\QCodeEditor_autogen\include_RelWithDebInfo;C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\include;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\include;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\include\QtCore;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\.\mkspecs\win32-msvc;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\include\QtWidgets;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\include\QtGui;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\include\QtANGLE;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;QT_CORE_LIB;QT_NO_DEBUG;QT_WIDGETS_LIB;QT_GUI_LIB;CMAKE_INTDIR="RelWithDebInfo";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;QT_CORE_LIB;QT_NO_DEBUG;QT_WIDGETS_LIB;QT_GUI_LIB;CMAKE_INTDIR=\"RelWithDebInfo\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\build\QCodeEditor_autogen\include_RelWithDebInfo;C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\include;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\include;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\include\QtCore;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\.\mkspecs\win32-msvc;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\include\QtWidgets;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\include\QtGui;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\include\QtANGLE;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\build\QCodeEditor_autogen\include_RelWithDebInfo;C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\include;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\include;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\include\QtCore;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\.\mkspecs\win32-msvc;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\include\QtWidgets;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\include\QtGui;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\include\QtANGLE;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <PreBuildEvent>
+      <Message>Automatic MOC for target QCodeEditor</Message>
+      <Command>setlocal
+cd C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\build
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E cmake_autogen C:/Users/MARCANTF/Desktop/QT/GIT/QMud/qmudeditor/QCodeEditor/build/CMakeFiles/QCodeEditor_autogen.dir/AutogenInfo.json RelWithDebInfo
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+    </PreBuildEvent>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\build\CMakeFiles\84582185e3d5d0d1cbe2c996cff47d2c\qrc_qcodeeditor_resources.cpp.rule">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Automatic RCC for resources/qcodeeditor_resources.qrc</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+cd C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\build
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E cmake_autorcc C:/Users/MARCANTF/Desktop/QT/GIT/QMud/qmudeditor/QCodeEditor/build/CMakeFiles/QCodeEditor_autogen.dir/AutoRcc_qcodeeditor_resources_3YJK5W5UP7_Info.json Debug
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E cmake_autorcc C:/Users/MARCANTF/Desktop/QT/GIT/QMud/qmudeditor/QCodeEditor/build/CMakeFiles/QCodeEditor_autogen.dir/AutoRcc_qcodeeditor_resources_3YJK5W5UP7_Info.json Release
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E cmake_autorcc C:/Users/MARCANTF/Desktop/QT/GIT/QMud/qmudeditor/QCodeEditor/build/CMakeFiles/QCodeEditor_autogen.dir/AutoRcc_qcodeeditor_resources_3YJK5W5UP7_Info.json MinSizeRel
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E cmake_autorcc C:/Users/MARCANTF/Desktop/QT/GIT/QMud/qmudeditor/QCodeEditor/build/CMakeFiles/QCodeEditor_autogen.dir/AutoRcc_qcodeeditor_resources_3YJK5W5UP7_Info.json RelWithDebInfo
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\resources\qcodeeditor_resources.qrc;C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\build\CMakeFiles\QCodeEditor_autogen.dir\AutoRcc_qcodeeditor_resources_3YJK5W5UP7_Info.json;C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\resources\default_style.xml;C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\resources\languages\python.xml;C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\resources\languages\lua.xml;C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\resources\languages\cpp.xml;C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\resources\languages\glsl.xml;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\bin\rcc.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\build\QCodeEditor_autogen\3YJK5W5UP7\qrc_qcodeeditor_resources.cpp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Automatic RCC for resources/qcodeeditor_resources.qrc</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+cd C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\build
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E cmake_autorcc C:/Users/MARCANTF/Desktop/QT/GIT/QMud/qmudeditor/QCodeEditor/build/CMakeFiles/QCodeEditor_autogen.dir/AutoRcc_qcodeeditor_resources_3YJK5W5UP7_Info.json Debug
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E cmake_autorcc C:/Users/MARCANTF/Desktop/QT/GIT/QMud/qmudeditor/QCodeEditor/build/CMakeFiles/QCodeEditor_autogen.dir/AutoRcc_qcodeeditor_resources_3YJK5W5UP7_Info.json Release
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E cmake_autorcc C:/Users/MARCANTF/Desktop/QT/GIT/QMud/qmudeditor/QCodeEditor/build/CMakeFiles/QCodeEditor_autogen.dir/AutoRcc_qcodeeditor_resources_3YJK5W5UP7_Info.json MinSizeRel
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E cmake_autorcc C:/Users/MARCANTF/Desktop/QT/GIT/QMud/qmudeditor/QCodeEditor/build/CMakeFiles/QCodeEditor_autogen.dir/AutoRcc_qcodeeditor_resources_3YJK5W5UP7_Info.json RelWithDebInfo
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\resources\qcodeeditor_resources.qrc;C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\build\CMakeFiles\QCodeEditor_autogen.dir\AutoRcc_qcodeeditor_resources_3YJK5W5UP7_Info.json;C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\resources\default_style.xml;C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\resources\languages\python.xml;C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\resources\languages\lua.xml;C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\resources\languages\cpp.xml;C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\resources\languages\glsl.xml;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\bin\rcc.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\build\QCodeEditor_autogen\3YJK5W5UP7\qrc_qcodeeditor_resources.cpp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Automatic RCC for resources/qcodeeditor_resources.qrc</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+cd C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\build
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E cmake_autorcc C:/Users/MARCANTF/Desktop/QT/GIT/QMud/qmudeditor/QCodeEditor/build/CMakeFiles/QCodeEditor_autogen.dir/AutoRcc_qcodeeditor_resources_3YJK5W5UP7_Info.json Debug
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E cmake_autorcc C:/Users/MARCANTF/Desktop/QT/GIT/QMud/qmudeditor/QCodeEditor/build/CMakeFiles/QCodeEditor_autogen.dir/AutoRcc_qcodeeditor_resources_3YJK5W5UP7_Info.json Release
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E cmake_autorcc C:/Users/MARCANTF/Desktop/QT/GIT/QMud/qmudeditor/QCodeEditor/build/CMakeFiles/QCodeEditor_autogen.dir/AutoRcc_qcodeeditor_resources_3YJK5W5UP7_Info.json MinSizeRel
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E cmake_autorcc C:/Users/MARCANTF/Desktop/QT/GIT/QMud/qmudeditor/QCodeEditor/build/CMakeFiles/QCodeEditor_autogen.dir/AutoRcc_qcodeeditor_resources_3YJK5W5UP7_Info.json RelWithDebInfo
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\resources\qcodeeditor_resources.qrc;C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\build\CMakeFiles\QCodeEditor_autogen.dir\AutoRcc_qcodeeditor_resources_3YJK5W5UP7_Info.json;C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\resources\default_style.xml;C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\resources\languages\python.xml;C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\resources\languages\lua.xml;C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\resources\languages\cpp.xml;C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\resources\languages\glsl.xml;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\bin\rcc.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\build\QCodeEditor_autogen\3YJK5W5UP7\qrc_qcodeeditor_resources.cpp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Automatic RCC for resources/qcodeeditor_resources.qrc</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+cd C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\build
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E cmake_autorcc C:/Users/MARCANTF/Desktop/QT/GIT/QMud/qmudeditor/QCodeEditor/build/CMakeFiles/QCodeEditor_autogen.dir/AutoRcc_qcodeeditor_resources_3YJK5W5UP7_Info.json Debug
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E cmake_autorcc C:/Users/MARCANTF/Desktop/QT/GIT/QMud/qmudeditor/QCodeEditor/build/CMakeFiles/QCodeEditor_autogen.dir/AutoRcc_qcodeeditor_resources_3YJK5W5UP7_Info.json Release
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E cmake_autorcc C:/Users/MARCANTF/Desktop/QT/GIT/QMud/qmudeditor/QCodeEditor/build/CMakeFiles/QCodeEditor_autogen.dir/AutoRcc_qcodeeditor_resources_3YJK5W5UP7_Info.json MinSizeRel
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E cmake_autorcc C:/Users/MARCANTF/Desktop/QT/GIT/QMud/qmudeditor/QCodeEditor/build/CMakeFiles/QCodeEditor_autogen.dir/AutoRcc_qcodeeditor_resources_3YJK5W5UP7_Info.json RelWithDebInfo
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\resources\qcodeeditor_resources.qrc;C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\build\CMakeFiles\QCodeEditor_autogen.dir\AutoRcc_qcodeeditor_resources_3YJK5W5UP7_Info.json;C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\resources\default_style.xml;C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\resources\languages\python.xml;C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\resources\languages\lua.xml;C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\resources\languages\cpp.xml;C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\resources\languages\glsl.xml;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\bin\rcc.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\build\QCodeEditor_autogen\3YJK5W5UP7\qrc_qcodeeditor_resources.cpp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\CMakeLists.txt">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule C:/Users/MARCANTF/Desktop/QT/GIT/QMud/qmudeditor/QCodeEditor/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/MARCANTF/Desktop/QT/GIT/QMud/qmudeditor/QCodeEditor -BC:/Users/MARCANTF/Desktop/QT/GIT/QMud/qmudeditor/QCodeEditor/build --check-stamp-file C:/Users/MARCANTF/Desktop/QT/GIT/QMud/qmudeditor/QCodeEditor/build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Program Files\CMake\share\cmake-3.16\Modules\CMakeCInformation.cmake;C:\Program Files\CMake\share\cmake-3.16\Modules\CMakeCXXInformation.cmake;C:\Program Files\CMake\share\cmake-3.16\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\CMake\share\cmake-3.16\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-3.16\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\CMake\share\cmake-3.16\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-3.16\Modules\CMakeParseArguments.cmake;C:\Program Files\CMake\share\cmake-3.16\Modules\CMakeRCInformation.cmake;C:\Program Files\CMake\share\cmake-3.16\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-3.16\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-3.16\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Program Files\CMake\share\cmake-3.16\Modules\Compiler\MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.16\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.16\Modules\Platform\Windows-MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.16\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.16\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-3.16\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-3.16\Modules\Platform\WindowsPaths.cmake;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\lib\cmake\Qt5Core\Qt5CoreConfig.cmake;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\lib\cmake\Qt5Core\Qt5CoreConfigExtras.cmake;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\lib\cmake\Qt5Core\Qt5CoreConfigExtrasMkspecDir.cmake;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\lib\cmake\Qt5Core\Qt5CoreConfigVersion.cmake;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\lib\cmake\Qt5Core\Qt5CoreMacros.cmake;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\lib\cmake\Qt5Gui\Qt5GuiConfig.cmake;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\lib\cmake\Qt5Gui\Qt5GuiConfigExtras.cmake;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\lib\cmake\Qt5Gui\Qt5GuiConfigVersion.cmake;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\lib\cmake\Qt5Gui\Qt5Gui_QGifPlugin.cmake;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\lib\cmake\Qt5Gui\Qt5Gui_QICNSPlugin.cmake;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\lib\cmake\Qt5Gui\Qt5Gui_QICOPlugin.cmake;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\lib\cmake\Qt5Gui\Qt5Gui_QJpegPlugin.cmake;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\lib\cmake\Qt5Gui\Qt5Gui_QMinimalIntegrationPlugin.cmake;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\lib\cmake\Qt5Gui\Qt5Gui_QOffscreenIntegrationPlugin.cmake;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\lib\cmake\Qt5Gui\Qt5Gui_QTgaPlugin.cmake;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\lib\cmake\Qt5Gui\Qt5Gui_QTiffPlugin.cmake;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\lib\cmake\Qt5Gui\Qt5Gui_QTuioTouchPlugin.cmake;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\lib\cmake\Qt5Gui\Qt5Gui_QVirtualKeyboardPlugin.cmake;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\lib\cmake\Qt5Gui\Qt5Gui_QWbmpPlugin.cmake;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\lib\cmake\Qt5Gui\Qt5Gui_QWebGLIntegrationPlugin.cmake;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\lib\cmake\Qt5Gui\Qt5Gui_QWebpPlugin.cmake;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\lib\cmake\Qt5Gui\Qt5Gui_QWindowsDirect2DIntegrationPlugin.cmake;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\lib\cmake\Qt5Gui\Qt5Gui_QWindowsIntegrationPlugin.cmake;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\lib\cmake\Qt5Gui\Qt5Gui_QXdgDesktopPortalThemePlugin.cmake;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\lib\cmake\Qt5Widgets\Qt5WidgetsConfig.cmake;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\lib\cmake\Qt5Widgets\Qt5WidgetsConfigExtras.cmake;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\lib\cmake\Qt5Widgets\Qt5WidgetsConfigVersion.cmake;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\lib\cmake\Qt5Widgets\Qt5WidgetsMacros.cmake;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\lib\cmake\Qt5Widgets\Qt5Widgets_QWindowsVistaStylePlugin.cmake;C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\build\CMakeFiles\3.16.3\CMakeCCompiler.cmake;C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\build\CMakeFiles\3.16.3\CMakeCXXCompiler.cmake;C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\build\CMakeFiles\3.16.3\CMakeRCCompiler.cmake;C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\build\CMakeFiles\3.16.3\CMakeSystem.cmake;C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\resources\qcodeeditor_resources.qrc;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\build\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule C:/Users/MARCANTF/Desktop/QT/GIT/QMud/qmudeditor/QCodeEditor/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/MARCANTF/Desktop/QT/GIT/QMud/qmudeditor/QCodeEditor -BC:/Users/MARCANTF/Desktop/QT/GIT/QMud/qmudeditor/QCodeEditor/build --check-stamp-file C:/Users/MARCANTF/Desktop/QT/GIT/QMud/qmudeditor/QCodeEditor/build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Program Files\CMake\share\cmake-3.16\Modules\CMakeCInformation.cmake;C:\Program Files\CMake\share\cmake-3.16\Modules\CMakeCXXInformation.cmake;C:\Program Files\CMake\share\cmake-3.16\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\CMake\share\cmake-3.16\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-3.16\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\CMake\share\cmake-3.16\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-3.16\Modules\CMakeParseArguments.cmake;C:\Program Files\CMake\share\cmake-3.16\Modules\CMakeRCInformation.cmake;C:\Program Files\CMake\share\cmake-3.16\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-3.16\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-3.16\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Program Files\CMake\share\cmake-3.16\Modules\Compiler\MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.16\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.16\Modules\Platform\Windows-MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.16\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.16\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-3.16\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-3.16\Modules\Platform\WindowsPaths.cmake;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\lib\cmake\Qt5Core\Qt5CoreConfig.cmake;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\lib\cmake\Qt5Core\Qt5CoreConfigExtras.cmake;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\lib\cmake\Qt5Core\Qt5CoreConfigExtrasMkspecDir.cmake;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\lib\cmake\Qt5Core\Qt5CoreConfigVersion.cmake;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\lib\cmake\Qt5Core\Qt5CoreMacros.cmake;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\lib\cmake\Qt5Gui\Qt5GuiConfig.cmake;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\lib\cmake\Qt5Gui\Qt5GuiConfigExtras.cmake;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\lib\cmake\Qt5Gui\Qt5GuiConfigVersion.cmake;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\lib\cmake\Qt5Gui\Qt5Gui_QGifPlugin.cmake;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\lib\cmake\Qt5Gui\Qt5Gui_QICNSPlugin.cmake;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\lib\cmake\Qt5Gui\Qt5Gui_QICOPlugin.cmake;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\lib\cmake\Qt5Gui\Qt5Gui_QJpegPlugin.cmake;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\lib\cmake\Qt5Gui\Qt5Gui_QMinimalIntegrationPlugin.cmake;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\lib\cmake\Qt5Gui\Qt5Gui_QOffscreenIntegrationPlugin.cmake;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\lib\cmake\Qt5Gui\Qt5Gui_QTgaPlugin.cmake;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\lib\cmake\Qt5Gui\Qt5Gui_QTiffPlugin.cmake;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\lib\cmake\Qt5Gui\Qt5Gui_QTuioTouchPlugin.cmake;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\lib\cmake\Qt5Gui\Qt5Gui_QVirtualKeyboardPlugin.cmake;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\lib\cmake\Qt5Gui\Qt5Gui_QWbmpPlugin.cmake;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\lib\cmake\Qt5Gui\Qt5Gui_QWebGLIntegrationPlugin.cmake;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\lib\cmake\Qt5Gui\Qt5Gui_QWebpPlugin.cmake;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\lib\cmake\Qt5Gui\Qt5Gui_QWindowsDirect2DIntegrationPlugin.cmake;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\lib\cmake\Qt5Gui\Qt5Gui_QWindowsIntegrationPlugin.cmake;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\lib\cmake\Qt5Gui\Qt5Gui_QXdgDesktopPortalThemePlugin.cmake;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\lib\cmake\Qt5Widgets\Qt5WidgetsConfig.cmake;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\lib\cmake\Qt5Widgets\Qt5WidgetsConfigExtras.cmake;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\lib\cmake\Qt5Widgets\Qt5WidgetsConfigVersion.cmake;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\lib\cmake\Qt5Widgets\Qt5WidgetsMacros.cmake;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\lib\cmake\Qt5Widgets\Qt5Widgets_QWindowsVistaStylePlugin.cmake;C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\build\CMakeFiles\3.16.3\CMakeCCompiler.cmake;C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\build\CMakeFiles\3.16.3\CMakeCXXCompiler.cmake;C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\build\CMakeFiles\3.16.3\CMakeRCCompiler.cmake;C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\build\CMakeFiles\3.16.3\CMakeSystem.cmake;C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\resources\qcodeeditor_resources.qrc;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\build\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule C:/Users/MARCANTF/Desktop/QT/GIT/QMud/qmudeditor/QCodeEditor/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/MARCANTF/Desktop/QT/GIT/QMud/qmudeditor/QCodeEditor -BC:/Users/MARCANTF/Desktop/QT/GIT/QMud/qmudeditor/QCodeEditor/build --check-stamp-file C:/Users/MARCANTF/Desktop/QT/GIT/QMud/qmudeditor/QCodeEditor/build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Program Files\CMake\share\cmake-3.16\Modules\CMakeCInformation.cmake;C:\Program Files\CMake\share\cmake-3.16\Modules\CMakeCXXInformation.cmake;C:\Program Files\CMake\share\cmake-3.16\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\CMake\share\cmake-3.16\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-3.16\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\CMake\share\cmake-3.16\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-3.16\Modules\CMakeParseArguments.cmake;C:\Program Files\CMake\share\cmake-3.16\Modules\CMakeRCInformation.cmake;C:\Program Files\CMake\share\cmake-3.16\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-3.16\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-3.16\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Program Files\CMake\share\cmake-3.16\Modules\Compiler\MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.16\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.16\Modules\Platform\Windows-MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.16\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.16\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-3.16\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-3.16\Modules\Platform\WindowsPaths.cmake;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\lib\cmake\Qt5Core\Qt5CoreConfig.cmake;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\lib\cmake\Qt5Core\Qt5CoreConfigExtras.cmake;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\lib\cmake\Qt5Core\Qt5CoreConfigExtrasMkspecDir.cmake;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\lib\cmake\Qt5Core\Qt5CoreConfigVersion.cmake;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\lib\cmake\Qt5Core\Qt5CoreMacros.cmake;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\lib\cmake\Qt5Gui\Qt5GuiConfig.cmake;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\lib\cmake\Qt5Gui\Qt5GuiConfigExtras.cmake;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\lib\cmake\Qt5Gui\Qt5GuiConfigVersion.cmake;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\lib\cmake\Qt5Gui\Qt5Gui_QGifPlugin.cmake;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\lib\cmake\Qt5Gui\Qt5Gui_QICNSPlugin.cmake;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\lib\cmake\Qt5Gui\Qt5Gui_QICOPlugin.cmake;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\lib\cmake\Qt5Gui\Qt5Gui_QJpegPlugin.cmake;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\lib\cmake\Qt5Gui\Qt5Gui_QMinimalIntegrationPlugin.cmake;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\lib\cmake\Qt5Gui\Qt5Gui_QOffscreenIntegrationPlugin.cmake;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\lib\cmake\Qt5Gui\Qt5Gui_QTgaPlugin.cmake;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\lib\cmake\Qt5Gui\Qt5Gui_QTiffPlugin.cmake;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\lib\cmake\Qt5Gui\Qt5Gui_QTuioTouchPlugin.cmake;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\lib\cmake\Qt5Gui\Qt5Gui_QVirtualKeyboardPlugin.cmake;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\lib\cmake\Qt5Gui\Qt5Gui_QWbmpPlugin.cmake;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\lib\cmake\Qt5Gui\Qt5Gui_QWebGLIntegrationPlugin.cmake;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\lib\cmake\Qt5Gui\Qt5Gui_QWebpPlugin.cmake;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\lib\cmake\Qt5Gui\Qt5Gui_QWindowsDirect2DIntegrationPlugin.cmake;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\lib\cmake\Qt5Gui\Qt5Gui_QWindowsIntegrationPlugin.cmake;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\lib\cmake\Qt5Gui\Qt5Gui_QXdgDesktopPortalThemePlugin.cmake;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\lib\cmake\Qt5Widgets\Qt5WidgetsConfig.cmake;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\lib\cmake\Qt5Widgets\Qt5WidgetsConfigExtras.cmake;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\lib\cmake\Qt5Widgets\Qt5WidgetsConfigVersion.cmake;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\lib\cmake\Qt5Widgets\Qt5WidgetsMacros.cmake;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\lib\cmake\Qt5Widgets\Qt5Widgets_QWindowsVistaStylePlugin.cmake;C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\build\CMakeFiles\3.16.3\CMakeCCompiler.cmake;C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\build\CMakeFiles\3.16.3\CMakeCXXCompiler.cmake;C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\build\CMakeFiles\3.16.3\CMakeRCCompiler.cmake;C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\build\CMakeFiles\3.16.3\CMakeSystem.cmake;C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\resources\qcodeeditor_resources.qrc;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\build\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule C:/Users/MARCANTF/Desktop/QT/GIT/QMud/qmudeditor/QCodeEditor/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/MARCANTF/Desktop/QT/GIT/QMud/qmudeditor/QCodeEditor -BC:/Users/MARCANTF/Desktop/QT/GIT/QMud/qmudeditor/QCodeEditor/build --check-stamp-file C:/Users/MARCANTF/Desktop/QT/GIT/QMud/qmudeditor/QCodeEditor/build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Program Files\CMake\share\cmake-3.16\Modules\CMakeCInformation.cmake;C:\Program Files\CMake\share\cmake-3.16\Modules\CMakeCXXInformation.cmake;C:\Program Files\CMake\share\cmake-3.16\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\CMake\share\cmake-3.16\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-3.16\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\CMake\share\cmake-3.16\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-3.16\Modules\CMakeParseArguments.cmake;C:\Program Files\CMake\share\cmake-3.16\Modules\CMakeRCInformation.cmake;C:\Program Files\CMake\share\cmake-3.16\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-3.16\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-3.16\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Program Files\CMake\share\cmake-3.16\Modules\Compiler\MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.16\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.16\Modules\Platform\Windows-MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.16\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.16\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-3.16\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-3.16\Modules\Platform\WindowsPaths.cmake;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\lib\cmake\Qt5Core\Qt5CoreConfig.cmake;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\lib\cmake\Qt5Core\Qt5CoreConfigExtras.cmake;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\lib\cmake\Qt5Core\Qt5CoreConfigExtrasMkspecDir.cmake;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\lib\cmake\Qt5Core\Qt5CoreConfigVersion.cmake;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\lib\cmake\Qt5Core\Qt5CoreMacros.cmake;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\lib\cmake\Qt5Gui\Qt5GuiConfig.cmake;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\lib\cmake\Qt5Gui\Qt5GuiConfigExtras.cmake;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\lib\cmake\Qt5Gui\Qt5GuiConfigVersion.cmake;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\lib\cmake\Qt5Gui\Qt5Gui_QGifPlugin.cmake;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\lib\cmake\Qt5Gui\Qt5Gui_QICNSPlugin.cmake;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\lib\cmake\Qt5Gui\Qt5Gui_QICOPlugin.cmake;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\lib\cmake\Qt5Gui\Qt5Gui_QJpegPlugin.cmake;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\lib\cmake\Qt5Gui\Qt5Gui_QMinimalIntegrationPlugin.cmake;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\lib\cmake\Qt5Gui\Qt5Gui_QOffscreenIntegrationPlugin.cmake;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\lib\cmake\Qt5Gui\Qt5Gui_QTgaPlugin.cmake;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\lib\cmake\Qt5Gui\Qt5Gui_QTiffPlugin.cmake;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\lib\cmake\Qt5Gui\Qt5Gui_QTuioTouchPlugin.cmake;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\lib\cmake\Qt5Gui\Qt5Gui_QVirtualKeyboardPlugin.cmake;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\lib\cmake\Qt5Gui\Qt5Gui_QWbmpPlugin.cmake;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\lib\cmake\Qt5Gui\Qt5Gui_QWebGLIntegrationPlugin.cmake;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\lib\cmake\Qt5Gui\Qt5Gui_QWebpPlugin.cmake;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\lib\cmake\Qt5Gui\Qt5Gui_QWindowsDirect2DIntegrationPlugin.cmake;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\lib\cmake\Qt5Gui\Qt5Gui_QWindowsIntegrationPlugin.cmake;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\lib\cmake\Qt5Gui\Qt5Gui_QXdgDesktopPortalThemePlugin.cmake;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\lib\cmake\Qt5Widgets\Qt5WidgetsConfig.cmake;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\lib\cmake\Qt5Widgets\Qt5WidgetsConfigExtras.cmake;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\lib\cmake\Qt5Widgets\Qt5WidgetsConfigVersion.cmake;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\lib\cmake\Qt5Widgets\Qt5WidgetsMacros.cmake;C:\Qt\Qt5.12.7\5.12.7\msvc2017_64\lib\cmake\Qt5Widgets\Qt5Widgets_QWindowsVistaStylePlugin.cmake;C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\build\CMakeFiles\3.16.3\CMakeCCompiler.cmake;C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\build\CMakeFiles\3.16.3\CMakeCXXCompiler.cmake;C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\build\CMakeFiles\3.16.3\CMakeRCCompiler.cmake;C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\build\CMakeFiles\3.16.3\CMakeSystem.cmake;C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\resources\qcodeeditor_resources.qrc;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\build\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\build\QCodeEditor_autogen\mocs_compilation.cpp" />
+    <None Include="C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\resources\qcodeeditor_resources.qrc" />
+    <ClCompile Include="C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\src\internal\QCodeEditor.cpp" />
+    <ClCompile Include="C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\src\internal\QLineNumberArea.cpp" />
+    <ClCompile Include="C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\src\internal\QCXXHighlighter.cpp" />
+    <ClCompile Include="C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\src\internal\QSyntaxStyle.cpp" />
+    <ClCompile Include="C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\src\internal\QStyleSyntaxHighlighter.cpp" />
+    <ClCompile Include="C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\src\internal\QGLSLCompleter.cpp" />
+    <ClCompile Include="C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\src\internal\QGLSLHighlighter.cpp" />
+    <ClCompile Include="C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\src\internal\QLanguage.cpp" />
+    <ClCompile Include="C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\src\internal\QXMLHighlighter.cpp" />
+    <ClCompile Include="C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\src\internal\QJSONHighlighter.cpp" />
+    <ClCompile Include="C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\src\internal\QLuaCompleter.cpp" />
+    <ClCompile Include="C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\src\internal\QLuaHighlighter.cpp" />
+    <ClCompile Include="C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\src\internal\QPythonCompleter.cpp" />
+    <ClCompile Include="C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\src\internal\QPythonHighlighter.cpp" />
+    <ClCompile Include="C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\src\internal\QFramedTextAttribute.cpp" />
+    <None Include="C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\include\QHighlightRule" />
+    <None Include="C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\include\QHighlightBlockRule" />
+    <None Include="C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\include\QCodeEditor" />
+    <None Include="C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\include\QCXXHighlighter" />
+    <None Include="C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\include\QLineNumberArea" />
+    <None Include="C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\include\QStyleSyntaxHighlighter" />
+    <None Include="C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\include\QSyntaxStyle" />
+    <None Include="C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\include\QGLSLCompleter" />
+    <None Include="C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\include\QGLSLHighlighter" />
+    <None Include="C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\include\QLanguage" />
+    <None Include="C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\include\QXMLHighlighter" />
+    <None Include="C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\include\QJSONHighlighter" />
+    <None Include="C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\include\QLuaCompleter" />
+    <None Include="C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\include\QLuaHighlighter" />
+    <None Include="C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\include\QPythonHighlighter" />
+    <None Include="C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\include\QFramedTextAttribute" />
+    <ClInclude Include="C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\include\internal\QHighlightRule.hpp" />
+    <ClInclude Include="C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\include\internal\QHighlightBlockRule.hpp" />
+    <ClInclude Include="C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\include\internal\QCodeEditor.hpp" />
+    <ClInclude Include="C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\include\internal\QCXXHighlighter.hpp" />
+    <ClInclude Include="C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\include\internal\QLineNumberArea.hpp" />
+    <ClInclude Include="C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\include\internal\QStyleSyntaxHighlighter.hpp" />
+    <ClInclude Include="C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\include\internal\QSyntaxStyle.hpp" />
+    <ClInclude Include="C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\include\internal\QGLSLCompleter.hpp" />
+    <ClInclude Include="C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\include\internal\QGLSLHighlighter.hpp" />
+    <ClInclude Include="C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\include\internal\QLanguage.hpp" />
+    <ClInclude Include="C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\include\internal\QXMLHighlighter.hpp" />
+    <ClInclude Include="C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\include\internal\QJSONHighlighter.hpp" />
+    <ClInclude Include="C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\include\internal\QLuaCompleter.hpp" />
+    <ClInclude Include="C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\include\internal\QLuaHighlighter.hpp" />
+    <ClInclude Include="C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\include\internal\QPythonCompleter.hpp" />
+    <ClInclude Include="C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\include\internal\QPythonHighlighter.hpp" />
+    <ClInclude Include="C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\include\internal\QFramedTextAttribute.hpp" />
+    <ClCompile Include="C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\build\QCodeEditor_autogen\3YJK5W5UP7\qrc_qcodeeditor_resources.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\build\ZERO_CHECK.vcxproj">
+      <Project>{22EB5B06-2915-3D3B-8E99-B20D66EBFACF}</Project>
+      <Name>ZERO_CHECK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

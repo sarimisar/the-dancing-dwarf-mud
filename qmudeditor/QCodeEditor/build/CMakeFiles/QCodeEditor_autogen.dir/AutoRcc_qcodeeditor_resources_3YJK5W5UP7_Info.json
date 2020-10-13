@@ -1,0 +1,34 @@
+{
+	"BUILD_DIR" : "C:/Users/MARCANTF/Desktop/QT/GIT/QMud/qmudeditor/QCodeEditor/build/QCodeEditor_autogen",
+	"CMAKE_BINARY_DIR" : "C:/Users/MARCANTF/Desktop/QT/GIT/QMud/qmudeditor/QCodeEditor/build",
+	"CMAKE_CURRENT_BINARY_DIR" : "C:/Users/MARCANTF/Desktop/QT/GIT/QMud/qmudeditor/QCodeEditor/build",
+	"CMAKE_CURRENT_SOURCE_DIR" : "C:/Users/MARCANTF/Desktop/QT/GIT/QMud/qmudeditor/QCodeEditor",
+	"CMAKE_SOURCE_DIR" : "C:/Users/MARCANTF/Desktop/QT/GIT/QMud/qmudeditor/QCodeEditor",
+	"INCLUDE_DIR" : "C:/Users/MARCANTF/Desktop/QT/GIT/QMud/qmudeditor/QCodeEditor/build/QCodeEditor_autogen/include",
+	"INCLUDE_DIR_Debug" : "C:/Users/MARCANTF/Desktop/QT/GIT/QMud/qmudeditor/QCodeEditor/build/QCodeEditor_autogen/include_Debug",
+	"INCLUDE_DIR_MinSizeRel" : "C:/Users/MARCANTF/Desktop/QT/GIT/QMud/qmudeditor/QCodeEditor/build/QCodeEditor_autogen/include_MinSizeRel",
+	"INCLUDE_DIR_RelWithDebInfo" : "C:/Users/MARCANTF/Desktop/QT/GIT/QMud/qmudeditor/QCodeEditor/build/QCodeEditor_autogen/include_RelWithDebInfo",
+	"INCLUDE_DIR_Release" : "C:/Users/MARCANTF/Desktop/QT/GIT/QMud/qmudeditor/QCodeEditor/build/QCodeEditor_autogen/include_Release",
+	"INPUTS" : 
+	[
+		"C:/Users/MARCANTF/Desktop/QT/GIT/QMud/qmudeditor/QCodeEditor/resources/default_style.xml",
+		"C:/Users/MARCANTF/Desktop/QT/GIT/QMud/qmudeditor/QCodeEditor/resources/languages/python.xml",
+		"C:/Users/MARCANTF/Desktop/QT/GIT/QMud/qmudeditor/QCodeEditor/resources/languages/lua.xml",
+		"C:/Users/MARCANTF/Desktop/QT/GIT/QMud/qmudeditor/QCodeEditor/resources/languages/cpp.xml",
+		"C:/Users/MARCANTF/Desktop/QT/GIT/QMud/qmudeditor/QCodeEditor/resources/languages/glsl.xml"
+	],
+	"LOCK_FILE" : "C:/Users/MARCANTF/Desktop/QT/GIT/QMud/qmudeditor/QCodeEditor/build/CMakeFiles/QCodeEditor_autogen.dir/AutoRcc_qcodeeditor_resources_3YJK5W5UP7_Lock.lock",
+	"MULTI_CONFIG" : true,
+	"OPTIONS" : [ "-name", "qcodeeditor_resources" ],
+	"OUTPUT_CHECKSUM" : "3YJK5W5UP7",
+	"OUTPUT_NAME" : "qrc_qcodeeditor_resources.cpp",
+	"RCC_EXECUTABLE" : "C:/Qt/Qt5.12.7/5.12.7/msvc2017_64/bin/rcc.exe",
+	"RCC_LIST_OPTIONS" : [ "--list" ],
+	"SETTINGS_FILE" : "C:/Users/MARCANTF/Desktop/QT/GIT/QMud/qmudeditor/QCodeEditor/build/CMakeFiles/QCodeEditor_autogen.dir/AutoRcc_qcodeeditor_resources_3YJK5W5UP7_Used.txt",
+	"SETTINGS_FILE_Debug" : "C:/Users/MARCANTF/Desktop/QT/GIT/QMud/qmudeditor/QCodeEditor/build/CMakeFiles/QCodeEditor_autogen.dir/AutoRcc_qcodeeditor_resources_3YJK5W5UP7_Used_Debug.txt",
+	"SETTINGS_FILE_MinSizeRel" : "C:/Users/MARCANTF/Desktop/QT/GIT/QMud/qmudeditor/QCodeEditor/build/CMakeFiles/QCodeEditor_autogen.dir/AutoRcc_qcodeeditor_resources_3YJK5W5UP7_Used_MinSizeRel.txt",
+	"SETTINGS_FILE_RelWithDebInfo" : "C:/Users/MARCANTF/Desktop/QT/GIT/QMud/qmudeditor/QCodeEditor/build/CMakeFiles/QCodeEditor_autogen.dir/AutoRcc_qcodeeditor_resources_3YJK5W5UP7_Used_RelWithDebInfo.txt",
+	"SETTINGS_FILE_Release" : "C:/Users/MARCANTF/Desktop/QT/GIT/QMud/qmudeditor/QCodeEditor/build/CMakeFiles/QCodeEditor_autogen.dir/AutoRcc_qcodeeditor_resources_3YJK5W5UP7_Used_Release.txt",
+	"SOURCE" : "C:/Users/MARCANTF/Desktop/QT/GIT/QMud/qmudeditor/QCodeEditor/resources/qcodeeditor_resources.qrc",
+	"VERBOSITY" : 0
+}

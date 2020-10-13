@@ -1,0 +1,15 @@
+{
+    "name": "admin",
+    "str": 20,
+    "con": 20,
+    "int": 20,
+    "wis": 20,
+    "dex": 20,
+    "cha": 20,
+    "hpCurrent": 1000,
+    "hpMaximum": 1000,
+    "apCurrent": 1000,
+    "apMaximum": 1000,
+    "mpCurrent": 1000,
+    "mpMaximum": 1000
+}

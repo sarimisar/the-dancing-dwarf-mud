@@ -1,0 +1,2 @@
+C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\build\Debug\QCodeEditor.pdb
+C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\build\QCodeEditor.dir\Debug\QCodeEditor.pdb

@@ -1,0 +1,10 @@
+^C:\USERS\MARCANTF\DESKTOP\QT\GIT\QMUD\QMUDEDITOR\QCODEEDITOR\CMAKELISTS.TXT
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/MARCANTF/Desktop/QT/GIT/QMud/qmudeditor/QCodeEditor -BC:/Users/MARCANTF/Desktop/QT/GIT/QMud/qmudeditor/QCodeEditor/build --check-stamp-file C:/Users/MARCANTF/Desktop/QT/GIT/QMud/qmudeditor/QCodeEditor/build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

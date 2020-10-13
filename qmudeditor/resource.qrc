@@ -1,0 +1,28 @@
+<RCC>
+    <qresource prefix="/icons">
+        <file>icons/redo.png</file>
+        <file>icons/undo.png</file>
+        <file>icons/paint-palette.png</file>
+        <file>icons/fill.png</file>
+        <file>icons/draw.png</file>
+        <file>icons/Cursor-icon.png</file>
+        <file>icons/remove.png</file>
+        <file>icons/add.jpg</file>
+        <file>icons/add.png</file>
+        <file>icons/save.png</file>
+        <file>icons/open-file-icon.png</file>
+        <file>icons/rectangular_draw.svg</file>
+        <file>icons/rectangular_selection.svg</file>
+        <file>icons/rubber.svg</file>
+        <file>icons/rubber_cursor.svg</file>
+        <file>icons/exit_north.svg</file>
+        <file>icons/exit_south.svg</file>
+        <file>icons/exit_weast.svg</file>
+        <file>icons/exit_east.svg</file>
+        <file>icons/exit_up.svg</file>
+        <file>icons/exit_down.svg</file>
+    </qresource>
+    <qresource prefix="/code_editor">
+        <file>QCodeEditor/example/resources/styles/drakula.xml</file>
+    </qresource>
+</RCC>

@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\build\CMakeFiles\f7ccbb58589da47552925176d3c5819e\generate.stamp.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{9A7C5BDF-3B1F-3753-9812-C970E54D8819}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

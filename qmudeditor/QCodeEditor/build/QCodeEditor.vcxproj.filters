@@ -1,0 +1,145 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\build\QCodeEditor_autogen\mocs_compilation.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\src\internal\QCodeEditor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\src\internal\QLineNumberArea.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\src\internal\QCXXHighlighter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\src\internal\QSyntaxStyle.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\src\internal\QStyleSyntaxHighlighter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\src\internal\QGLSLCompleter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\src\internal\QGLSLHighlighter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\src\internal\QLanguage.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\src\internal\QXMLHighlighter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\src\internal\QJSONHighlighter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\src\internal\QLuaCompleter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\src\internal\QLuaHighlighter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\src\internal\QPythonCompleter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\src\internal\QPythonHighlighter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\src\internal\QFramedTextAttribute.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\build\QCodeEditor_autogen\3YJK5W5UP7\qrc_qcodeeditor_resources.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\include\internal\QHighlightRule.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\include\internal\QHighlightBlockRule.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\include\internal\QCodeEditor.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\include\internal\QCXXHighlighter.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\include\internal\QLineNumberArea.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\include\internal\QStyleSyntaxHighlighter.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\include\internal\QSyntaxStyle.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\include\internal\QGLSLCompleter.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\include\internal\QGLSLHighlighter.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\include\internal\QLanguage.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\include\internal\QXMLHighlighter.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\include\internal\QJSONHighlighter.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\include\internal\QLuaCompleter.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\include\internal\QLuaHighlighter.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\include\internal\QPythonCompleter.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\include\internal\QPythonHighlighter.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\include\internal\QFramedTextAttribute.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\build\CMakeFiles\84582185e3d5d0d1cbe2c996cff47d2c\qrc_qcodeeditor_resources.cpp.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\resources\qcodeeditor_resources.qrc" />
+    <None Include="C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\include\QHighlightRule" />
+    <None Include="C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\include\QHighlightBlockRule" />
+    <None Include="C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\include\QCodeEditor" />
+    <None Include="C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\include\QCXXHighlighter" />
+    <None Include="C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\include\QLineNumberArea" />
+    <None Include="C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\include\QStyleSyntaxHighlighter" />
+    <None Include="C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\include\QSyntaxStyle" />
+    <None Include="C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\include\QGLSLCompleter" />
+    <None Include="C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\include\QGLSLHighlighter" />
+    <None Include="C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\include\QLanguage" />
+    <None Include="C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\include\QXMLHighlighter" />
+    <None Include="C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\include\QJSONHighlighter" />
+    <None Include="C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\include\QLuaCompleter" />
+    <None Include="C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\include\QLuaHighlighter" />
+    <None Include="C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\include\QPythonHighlighter" />
+    <None Include="C:\Users\MARCANTF\Desktop\QT\GIT\QMud\qmudeditor\QCodeEditor\include\QFramedTextAttribute" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{9A7C5BDF-3B1F-3753-9812-C970E54D8819}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{8D6195DA-0BEB-39B3-9313-7F3DC542A02A}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{A1A8A444-7331-3345-B940-9BFF49A0F9C3}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

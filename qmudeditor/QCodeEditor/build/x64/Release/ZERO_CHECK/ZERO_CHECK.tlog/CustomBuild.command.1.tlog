@@ -1,0 +1,10 @@
+^C:\USERS\MARCANTF\DESKTOP\QT\GIT\QMUD\QMUDEDITOR\QCODEEDITOR\BUILD\CMAKEFILES\F7CCBB58589DA47552925176D3C5819E\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/MARCANTF/Desktop/QT/GIT/QMud/qmudeditor/QCodeEditor -BC:/Users/MARCANTF/Desktop/QT/GIT/QMud/qmudeditor/QCodeEditor/build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/Users/MARCANTF/Desktop/QT/GIT/QMud/qmudeditor/QCodeEditor/build/QCodeEditor.sln
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
