@@ -1185,10 +1185,12 @@ void MainWindow::onJsonReceived(QByteArray json)
 
                 FormCharacterInfo* wdg = new FormCharacterInfo();
                 wdg->setData(elem);
-                wdg->adjustSize();
                 connect(wdg, &FormCharacterInfo::connect, this, &MainWindow::onCharacterConnectClicked);
 
                 ui->listWidgetChList->setItemWidget(item, wdg);
+
+                wdg->adjustSize();
+                item->setSizeHint(wdg->sizeHint() + QSize(0, 15));
             }
         }
 

@@ -112,7 +112,7 @@ border-radius: 5px;
     <item>
      <widget class="QStackedWidget" name="stackedWidget">
       <property name="currentIndex">
-       <number>1</number>
+       <number>2</number>
       </property>
       <widget class="QWidget" name="pageInGame">
        <property name="styleSheet">
@@ -2109,11 +2109,14 @@ background-color: rgba(244, 242, 229, 100);
               <string notr="true">QListWidget
 {
 	border:0px solid black;
-	background-color: rgba(0, 0, 0, 0);
+	background-color: rgba(0, 0, 0, 50);
 }</string>
              </property>
              <property name="horizontalScrollBarPolicy">
               <enum>Qt::ScrollBarAlwaysOff</enum>
+             </property>
+             <property name="spacing">
+              <number>5</number>
              </property>
             </widget>
            </item>
