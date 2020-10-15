@@ -22,7 +22,9 @@
 #include <QQmlEngine>
 #include <QHash>
 
-#define QMUD_GLOBAL_STATUS_DURATION_INFINITE    (INT_MAX)
+#define QMUD_GLOBAL_STATUS_DURATION_INFINITE                    (INT_MAX)
+#define QMUD_GLOBAL_CH_NUMBER_OF_STATISTICS_POINT               26
+
 
 namespace QMUD
 {
@@ -529,6 +531,7 @@ QString classTypeToReadableString(ClassType type);
 bool classTypeIsCaster(ClassType type);
 void classTypeJsRegistration(QQmlEngine &engine);
 ItemClassType itemClassTypeFromChClass(ClassType classType);
+void classTypeToMaxStatistics(ClassType classType, int& maxInt, int& maxWis, int& maxStr, int& maxCon, int& maxDex);
 
 // Non riordinare! Usato in Json
 enum class TemporaryStatusType

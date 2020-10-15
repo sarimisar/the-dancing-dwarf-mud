@@ -67,7 +67,6 @@
 // Personaggi
 // ---------------------------------------------
 #define QMUD_GLOBAL_CH_MAX_LEVEL                                100
-#define QMUD_GLOBAL_CH_NUMBER_OF_STATISTICS_POINT               26
 #define QMUD_GLOBAL_CH_MAX_LOOT_SIZE                            25
 #define QMUD_GLOBAL_CH_MAX_NUMBER_OF_ITEMS_IN_INVENTORY         100
 #define QMUD_GLOBAL_CH_NPC_MAX_HUNTING_FAILED_TRY               5

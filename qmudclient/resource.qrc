@@ -6,5 +6,13 @@
         <file>images/kobold.png</file>
         <file>images/cat.png</file>
         <file>images/bitmap.png</file>
+        <file>images/class_barbarian.png</file>
+        <file>images/class_mage.png</file>
+        <file>images/class_warrior.png</file>
+        <file>images/add.svg</file>
+        <file>images/down.svg</file>
+        <file>images/left.svg</file>
+        <file>images/right.svg</file>
+        <file>images/up.svg</file>
     </qresource>
 </RCC>

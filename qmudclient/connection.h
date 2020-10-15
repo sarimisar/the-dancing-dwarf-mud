@@ -19,13 +19,15 @@ public:
 
     bool connectToHost(QString hostName, quint16 port);
 
-    void send(QString str);
 
     bool isConnected() const;
 
 signals:
     void dataReceived(QString str);
     void jsonReceived(QByteArray obj);
+
+public slots:
+    void send(QString str);
 
 private slots:
     void onReadyRead();

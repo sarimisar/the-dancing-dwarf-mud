@@ -9,6 +9,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "formcharacterinfo.h"
+#include "formcreatecharacter.h"
 
 #include <QFontDatabase>
 #include <QJsonDocument>
@@ -1143,8 +1144,8 @@ void MainWindow::onJsonReceived(QByteArray json)
             case QMUD::ClientDataMessage::Message::ERROR_CONNECTION_FAILED: break;
             case QMUD::ClientDataMessage::Message::ERROR_CONNECTION_FAILED_CONTACT_ADMINISTRATOR: break;
             case QMUD::ClientDataMessage::Message::ERROR_CH_CREATION_FAILED_CONTACT_ADMINISTRATOR: break;
-            case QMUD::ClientDataMessage::Message::ERROR_CH_NAME_FAILED: break;
-
+            case QMUD::ClientDataMessage::Message::ERROR_CH_NAME_FAILED:
+                break;
 
             case QMUD::ClientDataMessage::Message::INFO_SIGNIN_OK:
                 ui->labelLoginSigninOk->setVisible(true);
@@ -1166,6 +1167,8 @@ void MainWindow::onJsonReceived(QByteArray json)
                 ui->stackedWidget->setCurrentWidget(ui->pageInGame);
                 break;
             }
+
+            emit messageReceived(data->message());
         }
         else if (pkt->type() == QMUD::ClientDataType::CHARACTERS_LIST)
         {
@@ -1440,7 +1443,7 @@ void MainWindow::resizeEvent(QResizeEvent *event)
     ui->widgetMain->setGeometry(0, 0, width(), height());
     ui->widgetMain->layout()->setContentsMargins(0,0,0,0);
 
-    ui->widgetLogin->setGeometry((width() - 450) / 2, (height() - 250) / 2, 450, 250);
+    //ui->widgetLogin->setGeometry((width() - 450) / 2, (height() - 250) / 2, 450, 250);
 
     ui->widgetRequest->setGeometry(0, 0, width(), height());
     ui->widgetChat->setGeometry((width() - 500) / 2,
@@ -1576,4 +1579,13 @@ void MainWindow::on_pushButtonLoginCreate_clicked()
     ui->labelLoginSigninOk->setVisible(false);
 
     m_connection.send(QString("signin %1 %2").arg(ui->lineEditLoginUsername->text()).arg(ui->lineEditLoginPassword->text()));
+}
+
+void MainWindow::on_pushButtonChListCreate_clicked()
+{
+    FormCreateCharacter* wnd = new FormCreateCharacter();
+
+    connect(this, &MainWindow::messageReceived, wnd, &FormCreateCharacter::onMessage);
+    connect(wnd, &FormCreateCharacter::sendCommand, &m_connection, &Connection::send);
+    wnd->show();
 }

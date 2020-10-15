@@ -19,6 +19,7 @@
 #include "map.h"
 #include "../network/netconnection.h"
 #include "../global.h"
+#include "../common.h"
 #include "../globaldebug.h"
 #include "color.h"
 #include "itemweapon.h"
@@ -874,64 +875,7 @@ void World::onCommandReceived(PlayerConnection *conn, Player* player, QString cm
             int maxCon = 18;
             int maxDex = 18;
 
-            if (chClass == QMUD::ClassType::WARRIOR)
-            {
-                maxInt = 16;
-                maxWis = 16;
-                maxStr = 18;
-                maxCon = 18;
-                maxDex = 16;
-            }
-            else if (chClass == QMUD::ClassType::MAGE)
-            {
-                maxInt = 18;
-                maxWis = 18;
-                maxStr = 16;
-                maxCon = 16;
-                maxDex = 16;
-            }
-            else if (chClass == QMUD::ClassType::BARBARIAN)
-            {
-                maxInt = 16;
-                maxWis = 16;
-                maxStr = 18;
-                maxCon = 18;
-                maxDex = 16;
-            }
-            else if (chClass == QMUD::ClassType::DRUID)
-            {
-                maxInt = 18;
-                maxWis = 18;
-                maxStr = 16;
-                maxCon = 16;
-                maxDex = 16;
-            }
-            else if (chClass == QMUD::ClassType::MONK)
-            {
-                maxInt = 16;
-                maxWis = 16;
-                maxStr = 18;
-                maxCon = 16;
-                maxDex = 18;
-            }
-            else if (chClass == QMUD::ClassType::PRIEST)
-            {
-                maxInt = 18;
-                maxWis = 18;
-                maxStr = 16;
-                maxCon = 16;
-                maxDex = 16;
-            }
-            else if (chClass == QMUD::ClassType::ROGUE)
-            {
-                maxInt = 16;
-                maxWis = 16;
-                maxStr = 18;
-                maxCon = 16;
-                maxDex = 18;
-            }
-            else
-                Q_ASSERT(false);
+            QMUD::classTypeToMaxStatistics(chClass, maxInt, maxWis, maxStr, maxCon, maxDex);
 
             int chInt = strChInt.toInt();
             int chWis = strChWis.toInt();

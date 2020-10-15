@@ -37,6 +37,9 @@ public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+signals:
+    void messageReceived(QMUD::ClientDataMessage::Message message);
+
 private slots:
     void onDataReceived(QString data);
     void onJsonReceived(QByteArray json);
@@ -62,6 +65,7 @@ private slots:
     void on_lineEditLoginPassword_returnPressed();
     void on_pushButtonLoginLogin_clicked();
     void on_pushButtonLoginCreate_clicked();
+    void on_pushButtonChListCreate_clicked();
 
 protected:
     void keyPressEvent(QKeyEvent*);

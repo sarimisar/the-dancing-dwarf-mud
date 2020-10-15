@@ -416,11 +416,11 @@ static QString raceReadableString[static_cast<int>(QMUD::RaceType::RACE_TYPE_MAX
 static int raceStatsPC[static_cast<int>(QMUD::RaceType::RACE_TYPE_PC_MAX)][5] =
 {
     { 6,    6,	6,	6,	6 },          // Umano
-    { 6,	8,	8,	6,	6 },          // Nano
-    { 8,	8,	6,	6,	6 },          // Gnomo
-    { 6,	6,	8,	8,	6 },          // Mezz'orco
-    { 8,	8,	6,	6,	6 },          // Elfo alto
-    { 6,	6,	6,	8,	8 }          // Mezz'elfo
+    { 4,	8,	8,	6,	4 },          // Nano
+    { 8,	8,	4,	4,	6 },          // Gnomo
+    { 4,	6,	8,	8,	4 },          // Mezz'orco
+    { 8,	8,	4,	4,	6 },          // Elfo alto
+    { 4,	4,	6,	8,	8 }          // Mezz'elfo
 };
 
 // INT, WIS, CON, STR, DEX
@@ -1896,6 +1896,81 @@ QMUD::ItemClassType QMUD::itemClassTypeFromChClass(QMUD::ClassType classType)
 
     Q_ASSERT(false);
     return QMUD::ItemClassType::UNKNOWN;
+}
+
+void QMUD::classTypeToMaxStatistics(QMUD::ClassType classType,
+                                    int& maxInt,
+                                    int& maxWis,
+                                    int& maxStr,
+                                    int& maxCon,
+                                    int& maxDex)
+{
+    if (classType == QMUD::ClassType::WARRIOR)
+    {
+        maxInt = 16;
+        maxWis = 16;
+        maxStr = 18;
+        maxCon = 18;
+        maxDex = 16;
+    }
+    else if (classType == QMUD::ClassType::MAGE)
+    {
+        maxInt = 18;
+        maxWis = 18;
+        maxStr = 16;
+        maxCon = 16;
+        maxDex = 16;
+    }
+    else if (classType == QMUD::ClassType::BARBARIAN)
+    {
+        maxInt = 16;
+        maxWis = 16;
+        maxStr = 18;
+        maxCon = 18;
+        maxDex = 16;
+    }
+    else if (classType == QMUD::ClassType::DRUID)
+    {
+        maxInt = 18;
+        maxWis = 18;
+        maxStr = 16;
+        maxCon = 16;
+        maxDex = 16;
+    }
+    else if (classType == QMUD::ClassType::MONK)
+    {
+        maxInt = 16;
+        maxWis = 16;
+        maxStr = 18;
+        maxCon = 16;
+        maxDex = 18;
+    }
+    else if (classType == QMUD::ClassType::PRIEST)
+    {
+        maxInt = 18;
+        maxWis = 18;
+        maxStr = 16;
+        maxCon = 16;
+        maxDex = 16;
+    }
+    else if (classType == QMUD::ClassType::ROGUE)
+    {
+        maxInt = 16;
+        maxWis = 16;
+        maxStr = 18;
+        maxCon = 16;
+        maxDex = 18;
+    }
+    else
+    {
+        maxInt = 16;
+        maxWis = 16;
+        maxStr = 16;
+        maxCon = 16;
+        maxDex = 16;
+
+        Q_ASSERT(false);
+    }
 }
 
 QString QMUD::statusToReadableString(QMUD::TemporaryStatusType status)

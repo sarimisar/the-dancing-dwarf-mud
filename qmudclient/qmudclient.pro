@@ -27,6 +27,7 @@ CONFIG += c++11
 SOURCES += \
     customlineedit.cpp \
     formcharacterinfo.cpp \
+    formcreatecharacter.cpp \
     formdamageinfo.cpp \
     formroomcontent.cpp \
         main.cpp \
@@ -37,6 +38,7 @@ SOURCES += \
 HEADERS += \
     customlineedit.h \
     formcharacterinfo.h \
+    formcreatecharacter.h \
     formdamageinfo.h \
     formroomcontent.h \
         mainwindow.h \
@@ -45,6 +47,7 @@ HEADERS += \
 
 FORMS += \
         formcharacterinfo.ui \
+        formcreatecharacter.ui \
         formdamageinfo.ui \
         formroomcontent.ui \
         mainwindow.ui
