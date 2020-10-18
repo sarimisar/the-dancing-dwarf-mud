@@ -198,17 +198,6 @@
             ]
         },
         {
-            "exitW": {
-                "code": "{283b57f4-3484-4c57-ac9d-4cb6c10a9cec}"
-            },
-            "name": "",
-            "roomCoord": [
-                0,
-                3,
-                1
-            ]
-        },
-        {
             "exitN": {
                 "closeAction": "close",
                 "code": "{5d06a8ef-a80f-4e51-953b-66614ff84bb2}",

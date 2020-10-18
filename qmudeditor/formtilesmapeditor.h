@@ -108,6 +108,8 @@ public:
     bool writeMapData(const EditorMap::MapTilesData& map, QJsonObject& obj, QVector<QJsonObject> &roomsObjs);
     bool writeMapImages(const EditorMap::MapTilesData& map, QString strBaseName);
 
+    void setNpcs(QVector<EditorNpc *> npcs);
+
     bool setMap(const EditorMap::MapTilesData &map);
     bool getMap(EditorMap::MapTilesData& map);
 
@@ -122,6 +124,7 @@ private slots:
     void on_tableWidgetTrees_itemSelectionChanged();
     void on_tableWidgetBuildings_itemSelectionChanged();
     void on_tableWidgetTerrains_itemSelectionChanged();
+    void on_tableWidgetNpcs_itemSelectionChanged();
 
 protected:
     void keyPressEvent(QKeyEvent *event) override;
@@ -136,6 +139,7 @@ private:
     MyGraphicsItem *createExit(QPixmap pixmap, QString fileName, int filePixmapIndex, const EditExitDialog::ExitData& exitData);
     MyGraphicsItem *createTree(QPixmap pixmap, const FlagsMap& map, QString fileName, int filePixmapIndex);
     MyGraphicsItem *createBuilding(QPixmap pixmap, const FlagsMap &map, QString fileName, int filePixmapIndex);
+    MyGraphicsItem *createNpc(QPixmap pixmap, QString fileName, int filePixmapIndex);
 
     Ui::FormTilesMapEditor *ui;
 
@@ -158,7 +162,8 @@ private:
             EXIT,
             TERRAIN,
             TREE,
-            BUILDING
+            BUILDING,
+            NPC
         };
 
         CurrentSelection() :
@@ -175,6 +180,8 @@ private:
                 return Type::TREE;
             else if (type.compare("BUILDING", Qt::CaseInsensitive) == 0)
                 return Type::BUILDING;
+            else if (type.compare("NPC", Qt::CaseInsensitive) == 0)
+                return Type::NPC;
             else
                 return Type::NONE;
         }
@@ -189,6 +196,8 @@ private:
                 return "TREE";
             else if (type == Type::BUILDING)
                 return "BUILDING";
+            else if (type == Type::NPC)
+                return "NPC";
             else
                 return "NONE";
         }

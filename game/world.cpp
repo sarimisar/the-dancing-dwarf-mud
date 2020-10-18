@@ -1141,21 +1141,29 @@ void World::checkRoomExit(Map *map)
             {
                 bool found = false;
 
-                for (auto toRoom : rooms)
+                for (auto map : m_mapMaps)
                 {
-                    auto toRoomExits = toRoom->exits();
+                    auto tmpRooms = map->rooms();
 
-                    if (toRoom != room)
+                    for (auto toRoom : tmpRooms)
                     {
-                        for (auto toRoomExit : toRoomExits)
+                        if (toRoom != room)
                         {
-                            if (toRoomExit->code() == exit->code())
+                            auto toRoomExits = toRoom->exits();
+
+                            for (auto toRoomExit : toRoomExits)
                             {
-                                exit->initExit(toRoom, toRoomExit);
-                                found = true;
-                                break;
+                                if (toRoomExit->code() == exit->code())
+                                {
+                                    exit->initExit(toRoom, toRoomExit);
+                                    found = true;
+                                    break;
+                                }
                             }
                         }
+
+                        if (found)
+                            break;
                     }
 
                     if (found)

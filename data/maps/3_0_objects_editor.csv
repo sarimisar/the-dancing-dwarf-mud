@@ -1,0 +1,15 @@
+{"filename":"1","index":"0","type":"NPC","x":"3","y":"8"}
+{"filename":"1","index":"0","type":"NPC","x":"5","y":"8"}
+{"filename":"0","index":"0","type":"NPC","x":"4","y":"8"}
+{"filename":"exitW","index":"0","specificData":{"action":"","code":"{283b57f4-3484-4c57-ac9d-4cb6c10a9cec}","descClose":"","descCloseOther":"","descOpen":"","descOpenOther":"","door":"","isHidden":false,"isOpen":false},"type":"EXIT","x":"1","y":"5"}
+{"filename":"exitN","index":"0","specificData":{"action":"","code":"{08307e26-930d-4337-8d70-27110468f2a0}","descClose":"","descCloseOther":"","descOpen":"","descOpenOther":"","door":"","isHidden":false,"isOpen":false},"type":"EXIT","x":"4","y":"16"}
+{"filename":"exitS","index":"0","specificData":{"action":"","code":"{08307e26-930d-4337-8d70-27110468f2a0}","descClose":"","descCloseOther":"","descOpen":"","descOpenOther":"","door":"","isHidden":false,"isOpen":false},"type":"EXIT","x":"4","y":"10"}
+{"filename":"exitW","index":"0","specificData":{"action":"","code":"{cce581b6-eab5-46c2-a385-e6bd0d8d035b}","descClose":"","descCloseOther":"","descOpen":"","descOpenOther":"","door":"","isHidden":false,"isOpen":false},"type":"EXIT","x":"16","y":"7"}
+{"filename":"exitE","index":"0","specificData":{"action":"","code":"{cce581b6-eab5-46c2-a385-e6bd0d8d035b}","descClose":"","descCloseOther":"","descOpen":"","descOpenOther":"","door":"","isHidden":false,"isOpen":false},"type":"EXIT","x":"13","y":"7"}
+{"filename":"1_image.png","index":"3","type":"TREE","x":"5","y":"23"}
+{"filename":"1_image.png","index":"3","type":"TREE","x":"6","y":"21"}
+{"filename":"1_image.png","index":"3","type":"TREE","x":"2","y":"19"}
+{"filename":"1_image.png","index":"1","type":"TREE","x":"4","y":"5"}
+{"filename":"1_image.png","index":"2","type":"TREE","x":"10","y":"4"}
+{"filename":"1_image.png","index":"1","type":"TREE","x":"20","y":"8"}
+{"filename":"1_image.png","index":"1","type":"TREE","x":"19","y":"4"}

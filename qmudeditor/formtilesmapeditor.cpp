@@ -20,6 +20,7 @@
 #include <QRandomGenerator>
 #include <QJsonArray>
 #include <QJsonObject>
+#include <QPainter>
 
 #define MAP_TILE_SIZE_PX            80
 #define MAP_SIZE_WIDTH              50
@@ -408,6 +409,48 @@ bool FormTilesMapEditor::writeMapData(const EditorMap::MapTilesData &map, QJsonO
         }
     }
 
+    // Npcs
+    for (int i = 0; i < objects.size(); ++i)
+    {
+        if (objects[i].type == CurrentSelection::Type::NPC)
+        {
+            QTableWidgetItem *item = Q_NULLPTR;
+
+            for (int row = 0; row < ui->tableWidgetNpcs->rowCount() && !item; ++row)
+            {
+                for (int column = 0; column < ui->tableWidgetNpcs->columnCount() && !item; ++column)
+                {
+                    auto tmpItem = ui->tableWidgetNpcs->item(row, column);
+
+                    if (tmpItem &&
+                            tmpItem->data(USER_ROLE_FILE_NAME).toString() == objects[i].filename &&
+                            tmpItem->data(USER_ROLE_FILE_PIXMAP_INDEX).toInt() == objects[i].index)
+                    {
+                        item = tmpItem;
+                    }
+                }
+            }
+
+            if (item)
+            {
+                QString name = item->data(USER_ROLE_FILE_NAME).toString();
+                int mapIndex = map.mapIndex();
+                int x = objects[i].x;
+                int y = objects[i].y;
+                QString key = QString("%1-%2-%3").arg(x).arg(y).arg(mapIndex);
+
+                QJsonArray arrayNpcs;
+
+                if (rooms[key].contains("npcs"))
+                    arrayNpcs = rooms[key]["npcs"].toArray();
+
+                arrayNpcs.append(name.toInt());
+
+                rooms[key]["npcs"] = arrayNpcs;
+            }
+        }
+    }
+
     // Scrivo le stanze
     for (auto it = rooms.begin(); it != rooms.end(); ++it)
     {
@@ -511,6 +554,41 @@ bool FormTilesMapEditor::writeMapImages(const EditorMap::MapTilesData &map, QStr
     pix.save(mapLevel1);
 
     return true;
+}
+
+void FormTilesMapEditor::setNpcs(QVector<EditorNpc*> npcs)
+{
+    ui->tableWidgetNpcs->clear();
+
+    ui->tableWidgetNpcs->setColumnCount(1);
+    ui->tableWidgetNpcs->setRowCount(0);
+
+    for (auto npc : npcs)
+    {
+        QPixmap pixmap = QPixmap(MAP_TILE_SIZE_PX, MAP_TILE_SIZE_PX);
+        pixmap.fill(QColor(0, 0, 0, 0));
+
+        {
+            QPainter painter(&pixmap);
+            painter.setBrush(QBrush(QColor(220, 30, 30, 128), Qt::SolidPattern));
+            painter.setPen(Qt::NoPen);
+            painter.drawRoundedRect(pixmap.rect(), 8, 8);
+            QFont font = painter.font();
+            font.setPointSize(10);
+            painter.setFont(font);
+            painter.setPen(Qt::white);
+            painter.drawText(pixmap.rect(), Qt::AlignCenter | Qt::TextWrapAnywhere, QString("%1:%2").arg(npc->id()).arg(npc->name()).left(30));
+        }
+
+        QTableWidgetItem* item = new QTableWidgetItem(QString("%1 - %2 [VL %3]").arg(npc->id()).arg(npc->name()).arg(npc->level()));
+
+        item->setData(USER_ROLE_PIXMAP, pixmap);
+        item->setData(USER_ROLE_FILE_NAME, QString("%1").arg(npc->id()));
+        item->setData(USER_ROLE_FILE_PIXMAP_INDEX, 0);
+
+        ui->tableWidgetNpcs->setRowCount(ui->tableWidgetNpcs->rowCount()+1);
+        ui->tableWidgetNpcs->setItem(ui->tableWidgetNpcs->rowCount()-1, 0, item);
+    }
 }
 
 bool FormTilesMapEditor::setMap(const EditorMap::MapTilesData& map)
@@ -671,6 +749,36 @@ bool FormTilesMapEditor::setMap(const EditorMap::MapTilesData& map)
             {
                 MyGraphicsItem* newItem = createBuilding(item->data(USER_ROLE_PIXMAP).value<QPixmap>(),
                                                      item->data(USER_ROLE_ROOMS).value<FlagsMap>(),
+                                                     item->data(USER_ROLE_FILE_NAME).toString(),
+                                                     item->data(USER_ROLE_FILE_PIXMAP_INDEX).toInt());
+
+                newItem->setPos(QPointF(objects[i].x * MAP_TILE_SIZE_PX, objects[i].y * MAP_TILE_SIZE_PX));
+
+                m_sceneMap.addItem(newItem);
+            }
+        }
+        else if (objects[i].type == CurrentSelection::Type::NPC)
+        {
+            QTableWidgetItem *item = Q_NULLPTR;
+
+            for (int row = 0; row < ui->tableWidgetNpcs->rowCount() && !item; ++row)
+            {
+                for (int column = 0; column < ui->tableWidgetNpcs->columnCount() && !item; ++column)
+                {
+                    auto tmpItem = ui->tableWidgetNpcs->item(row, column);
+
+                    if (tmpItem &&
+                            tmpItem->data(USER_ROLE_FILE_NAME).toString() == objects[i].filename &&
+                            tmpItem->data(USER_ROLE_FILE_PIXMAP_INDEX).toInt() == objects[i].index)
+                    {
+                        item = tmpItem;
+                    }
+                }
+            }
+
+            if (item)
+            {
+                MyGraphicsItem* newItem = createNpc(item->data(USER_ROLE_PIXMAP).value<QPixmap>(),
                                                      item->data(USER_ROLE_FILE_NAME).toString(),
                                                      item->data(USER_ROLE_FILE_PIXMAP_INDEX).toInt());
 
@@ -1207,6 +1315,26 @@ MyGraphicsItem *FormTilesMapEditor::createBuilding(QPixmap pixmap, const FlagsMa
     return newItem;
 }
 
+MyGraphicsItem *FormTilesMapEditor::createNpc(QPixmap pixmap, QString fileName, int filePixmapIndex)
+{
+    MyGraphicsItem* newItem = new MyGraphicsItem(pixmap, &m_undoStack, this);
+    newItem->setData(USER_ROLE_TYPE, QVariant::fromValue(static_cast<int>(CurrentSelection::Type::NPC)));
+    newItem->setData(USER_ROLE_FILE_NAME, fileName);
+    newItem->setData(USER_ROLE_FILE_PIXMAP_INDEX, filePixmapIndex);
+    newItem->setFlag(QGraphicsItem::ItemIsSelectable);
+    newItem->setFlag(QGraphicsItem::ItemIsMovable);
+    newItem->setZValue(Z_VALUE_EXITS);
+
+    QGraphicsDropShadowEffect *effect = new QGraphicsDropShadowEffect();
+    effect->setBlurRadius(20);
+    effect->setOffset(0);
+    effect->setColor(QColor(0, 0, 0, 255));
+
+    newItem->setGraphicsEffect(effect);
+
+    return newItem;
+}
+
 QVector<FormTilesMapEditor::ObjectData> FormTilesMapEditor::objectDataListFromString(QString str)
 {
     QVector<FormTilesMapEditor::ObjectData> list;
@@ -1394,6 +1522,34 @@ void FormTilesMapEditor::on_tableWidgetTerrains_itemSelectionChanged()
     }
 }
 
+void FormTilesMapEditor::on_tableWidgetNpcs_itemSelectionChanged()
+{
+    if (!ui->tableWidgetNpcs->selectedItems().isEmpty())
+    {
+        QTableWidgetItem* itemSelected = ui->tableWidgetNpcs->selectedItems()[0];
+
+        clearSelection(ui->tableWidgetNpcs);
+
+        CurrentSelection selection;
+        selection.type = CurrentSelection::Type::NPC;
+        selection.image = itemSelected->data(USER_ROLE_PIXMAP).value<QPixmap>();
+        selection.rooms = FlagsMap();
+        m_ptrCurrentSelectionItem = new MyGraphicsItem(selection.image, &m_undoStack, this);
+        m_ptrCurrentSelectionItem->setData(USER_ROLE_TYPE, itemSelected->data(USER_ROLE_TYPE));
+        m_ptrCurrentSelectionItem->setData(USER_ROLE_FILE_NAME, itemSelected->data(USER_ROLE_FILE_NAME));
+        m_ptrCurrentSelectionItem->setData(USER_ROLE_FILE_PIXMAP_INDEX, itemSelected->data(USER_ROLE_FILE_PIXMAP_INDEX));
+
+        m_sceneMap.addItem(m_ptrCurrentSelectionItem);
+
+        m_ptrCurrentSelectionItem->setVisible(false);
+        m_ptrCurrentSelectionItem->setZValue(Z_VALUE_CURRENT_SELECTION);
+
+        m_currentSelection = selection;
+
+        ui->graphicsView->setDragMode(QGraphicsView::NoDrag);
+    }
+}
+
 void FormTilesMapEditor::keyPressEvent(QKeyEvent *event)
 {
     if (event->key() == Qt::Key_Escape)
@@ -1496,6 +1652,15 @@ bool FormTilesMapEditor::eventFilter(QObject *object, QEvent *event)
                 else if (m_currentSelection.type == CurrentSelection::Type::BUILDING)
                 {
                     MyGraphicsItem* newItem = createBuilding(m_currentSelection.image, m_currentSelection.rooms,
+                                                         m_ptrCurrentSelectionItem->data(USER_ROLE_FILE_NAME).toString(),
+                                                         m_ptrCurrentSelectionItem->data(USER_ROLE_FILE_PIXMAP_INDEX).toInt());
+
+                    m_undoStack.push(new InsertItemCommand(newItem, &m_sceneMap, mouseEvent->scenePos()));
+                    ui->labelInfo->setText(QString("%1").arg(m_sceneMap.items().count()));
+                }
+                else if (m_currentSelection.type == CurrentSelection::Type::NPC)
+                {
+                    MyGraphicsItem* newItem = createNpc(m_currentSelection.image,
                                                          m_ptrCurrentSelectionItem->data(USER_ROLE_FILE_NAME).toString(),
                                                          m_ptrCurrentSelectionItem->data(USER_ROLE_FILE_PIXMAP_INDEX).toInt());
 

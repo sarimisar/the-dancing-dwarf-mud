@@ -238,7 +238,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     // Inizializzo l'editor delle mappe tiles
     m_ptrMapEditor = new FormTilesMapEditor();
-    m_ptrMapEditor->setWindowModality(Qt::WindowModal);
+    //m_ptrMapEditor->setWindowModality(Qt::WindowModal);
 
     connect(m_ptrMapEditor, SIGNAL(editComplete()), this, SLOT(onEditorMapTilesEditCompleted()));
 }
@@ -1580,7 +1580,10 @@ void MainWindow::on_tableWidgetTilesMaps_cellDoubleClicked(int row, int column)
     Q_UNUSED(column)
 
     EditorMap::MapTilesData mapData = ui->tableWidgetTilesMaps->item(row, 1)->data(Qt::UserRole).value<EditorMap::MapTilesData>();
+    m_ptrMapEditor->setNpcs(m_mapOnInterface->npcs());
 
     if (m_ptrMapEditor->setMap(mapData))
+    {
         m_ptrMapEditor->show();
+    }
 }

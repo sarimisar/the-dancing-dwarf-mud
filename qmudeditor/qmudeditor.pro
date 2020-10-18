@@ -47,9 +47,7 @@ SOURCES += \
     editornpc.cpp \
     editoritem.cpp \
     scripteditordialog.cpp \
-    tablemodel.cpp \
     dialogeditcolors.cpp \
-    styledelegatetablechars.cpp \
     editexitdialog.cpp \
     selectfromlistdialog.cpp \
     treewidgetaction.cpp
@@ -66,9 +64,7 @@ HEADERS += \
     editornpc.h \
     editoritem.h \
     scripteditordialog.h \
-    tablemodel.h \
     dialogeditcolors.h \
-    styledelegatetablechars.h \
     editexitdialog.h \
     selectfromlistdialog.h \
     treewidgetaction.h

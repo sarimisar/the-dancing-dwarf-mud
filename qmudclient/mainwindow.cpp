@@ -124,8 +124,8 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->graphicsViewMiniMap->scale(0.1, 0.1);
     //ui->graphicsViewMiniMap->scale(0.2, 0.2);
 
-    m_ptrDamageInfoPlayer = new FormDamageInfo(this);
-    m_ptrDamageInfoTarget = new FormDamageInfo(this);
+    m_ptrDamageInfoPlayer = new FormDamageInfo(ui->pageInGame);
+    m_ptrDamageInfoTarget = new FormDamageInfo(ui->pageInGame);
     m_ptrDamageInfoPlayer->raise();
     m_ptrDamageInfoTarget->raise();
 
@@ -138,7 +138,9 @@ MainWindow::MainWindow(QWidget *parent) :
     m_timerUpdateAttackInfo.start();
 
     // Carico le mappe
-    QStringList mapFileList = QDir::current().entryList(QDir::Files);
+    QDir mapsDir = QDir::current();
+    mapsDir.cd("maps");
+    QStringList mapFileList = mapsDir.entryList(QDir::Files);
 
     for (QString file : mapFileList)
     {
@@ -146,13 +148,13 @@ MainWindow::MainWindow(QWidget *parent) :
                 QFileInfo(file).baseName().endsWith("_0"))
         {
             QStringList values = QFileInfo(file).baseName().split("_");
-            m_mapMapsLevel0[values[values.size() - 3].toInt()][values[values.size() - 2].toInt()].load(file);
+            m_mapMapsLevel0[values[values.size() - 3].toInt()][values[values.size() - 2].toInt()].load(mapsDir.path() + "/" + file);
         }
         else if (QFileInfo(file).suffix() == "png" &&
                  QFileInfo(file).baseName().endsWith("_1"))
         {
             QStringList values = QFileInfo(file).baseName().split("_");
-            m_mapMapsLevel1[values[values.size() - 3].toInt()][values[values.size() - 2].toInt()].load(file);
+            m_mapMapsLevel1[values[values.size() - 3].toInt()][values[values.size() - 2].toInt()].load(mapsDir.path() + "/" + file);
         }
     }
 
@@ -976,15 +978,15 @@ void MainWindow::onJsonReceived(QByteArray json)
                 if (it == m_mapChs.end())
                 {
                     QGraphicsPixmapItem* item = new QGraphicsPixmapItem();
-                    if (elem.race == QMUD::RaceType::KOBOLD)
-                        item->setPixmap(QPixmap(":/images/images/kobold.png").scaled(m_iTilesSizePixels*0.8, m_iTilesSizePixels*0.8, Qt::KeepAspectRatio, Qt::SmoothTransformation));
-                    else if (elem.race == QMUD::RaceType::CAT)
-                        item->setPixmap(QPixmap(":/images/images/cat.png").scaled(m_iTilesSizePixels*0.8, m_iTilesSizePixels*0.8, Qt::KeepAspectRatio, Qt::SmoothTransformation));
-                    else
+                    //if (elem.race == QMUD::RaceType::KOBOLD)
+                    //    item->setPixmap(QPixmap(":/images/images/kobold.png").scaled(m_iTilesSizePixels*0.8, m_iTilesSizePixels*0.8, Qt::KeepAspectRatio, Qt::SmoothTransformation));
+                    //else if (elem.race == QMUD::RaceType::CAT)
+                    //    item->setPixmap(QPixmap(":/images/images/cat.png").scaled(m_iTilesSizePixels*0.8, m_iTilesSizePixels*0.8, Qt::KeepAspectRatio, Qt::SmoothTransformation));
+                    //else
                         item->setPixmap(QPixmap(":/images/images/battle.svg").scaled(m_iTilesSizePixels*0.8, m_iTilesSizePixels*0.8, Qt::KeepAspectRatio, Qt::SmoothTransformation));
 
                     QGraphicsDropShadowEffect *effect = new QGraphicsDropShadowEffect();
-                    effect->setBlurRadius(20);
+                    effect->setBlurRadius(10);
                     effect->setOffset(0);
                     effect->setColor(QColor(0, 0, 0, 255));
 
@@ -993,6 +995,7 @@ void MainWindow::onJsonReceived(QByteArray json)
                     newChs[elem.id] = QPair<QGraphicsPixmapItem*, QMUD::ClientDataRoomInfo::ChInfo>(item, elem);
 
                     m_graphicScene.addItem(item);
+                    item->setZValue(2);
                 }
                 else
                 {

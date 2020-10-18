@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>984</width>
-    <height>570</height>
+    <width>743</width>
+    <height>536</height>
    </rect>
   </property>
   <property name="focusPolicy">
@@ -112,7 +112,7 @@ border-radius: 5px;
     <item>
      <widget class="QStackedWidget" name="stackedWidget">
       <property name="currentIndex">
-       <number>2</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="pageInGame">
        <property name="styleSheet">
@@ -1664,7 +1664,7 @@ background-color: rgba(244, 242, 229, 100);
              <property name="sizeHint" stdset="0">
               <size>
                <width>0</width>
-               <height>20</height>
+               <height>0</height>
               </size>
              </property>
             </spacer>
@@ -1877,7 +1877,7 @@ background-color: rgba(244, 242, 229, 100);
              </property>
              <property name="sizeHint" stdset="0">
               <size>
-               <width>20</width>
+               <width>0</width>
                <height>0</height>
               </size>
              </property>
@@ -1908,7 +1908,7 @@ background-color: rgba(244, 242, 229, 100);
              <property name="sizeHint" stdset="0">
               <size>
                <width>0</width>
-               <height>20</height>
+               <height>0</height>
               </size>
              </property>
             </spacer>
@@ -1946,7 +1946,7 @@ background-color: rgba(244, 242, 229, 100);
              </property>
              <property name="sizeHint" stdset="0">
               <size>
-               <width>20</width>
+               <width>0</width>
                <height>0</height>
               </size>
              </property>
@@ -1978,8 +1978,8 @@ background-color: rgba(244, 242, 229, 100);
           </property>
           <property name="sizeHint" stdset="0">
            <size>
-            <width>20</width>
-            <height>40</height>
+            <width>0</width>
+            <height>0</height>
            </size>
           </property>
          </spacer>
@@ -1991,8 +1991,8 @@ background-color: rgba(244, 242, 229, 100);
           </property>
           <property name="sizeHint" stdset="0">
            <size>
-            <width>40</width>
-            <height>20</height>
+            <width>0</width>
+            <height>0</height>
            </size>
           </property>
          </spacer>
@@ -2004,8 +2004,8 @@ background-color: rgba(244, 242, 229, 100);
           </property>
           <property name="sizeHint" stdset="0">
            <size>
-            <width>40</width>
-            <height>20</height>
+            <width>0</width>
+            <height>0</height>
            </size>
           </property>
          </spacer>
@@ -2017,8 +2017,8 @@ background-color: rgba(244, 242, 229, 100);
           </property>
           <property name="sizeHint" stdset="0">
            <size>
-            <width>20</width>
-            <height>40</height>
+            <width>0</width>
+            <height>0</height>
            </size>
           </property>
          </spacer>
