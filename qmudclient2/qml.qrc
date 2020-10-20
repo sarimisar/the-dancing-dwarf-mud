@@ -1,0 +1,11 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>QMudTextEntry.qml</file>
+        <file>QMudLabel.qml</file>
+        <file>QMudButton.qml</file>
+        <file>PageLogin.qml</file>
+        <file>PageCharactersList.qml</file>
+        <file>PageInGame.qml</file>
+    </qresource>
+</RCC>
