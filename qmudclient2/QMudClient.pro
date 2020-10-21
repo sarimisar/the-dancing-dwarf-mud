@@ -18,9 +18,11 @@ SOURCES += \
         characterlistitemmodel.cpp \
         connection.cpp \
         connectionhandler.cpp \
-        main.cpp
+        main.cpp \
+        mapquickitem.cpp
 
-RESOURCES += qml.qrc
+RESOURCES += qml.qrc \
+    resource.qrc
 
 TRANSLATIONS += \
     QMudClient_it_IT.ts
@@ -40,4 +42,5 @@ HEADERS += \
     ../common.h \
     characterlistitemmodel.h \
     connection.h \
-    connectionhandler.h
+    connectionhandler.h \
+    mapquickitem.h

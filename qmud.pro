@@ -1,4 +1,5 @@
-QT += gui
+QT += gui \
+    quick
 QT += network qml
 
 CONFIG += c++11 console

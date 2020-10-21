@@ -28,22 +28,22 @@ CommandMove::~CommandMove()
 
 bool CommandMove::isOf(QString cmd)
 {
-    return Command::isOf(QObject::tr("nord"), cmd) ||
-            Command::isOf(QObject::tr("sud"), cmd) ||
-            Command::isOf(QObject::tr("ovest"), cmd) ||
-            Command::isOf(QObject::tr("est"), cmd) ||
-            Command::isOf(QObject::tr("alto"), cmd) ||
-            Command::isOf(QObject::tr("basso"), cmd);
+    return Command::isOf("moven", cmd) ||
+            Command::isOf("moves", cmd) ||
+            Command::isOf("movew", cmd) ||
+            Command::isOf("movee", cmd) ||
+            Command::isOf("moveu", cmd) ||
+            Command::isOf("moved", cmd);
 }
 
 QStringList CommandMove::commands()
 {
-    return QStringList() << QObject::tr("nord")
-                         << QObject::tr("sud")
-                         << QObject::tr("ovest")
-                         << QObject::tr("est")
-                         << QObject::tr("alto")
-                         << QObject::tr("basso");
+    return QStringList() << "moven"
+                         << "moves"
+                         << "movew"
+                         << "movee"
+                         << "moveu"
+                         << "moved";
 }
 
 void CommandMove::sendUsage(Player *player, bool help)
@@ -84,75 +84,38 @@ void CommandMove::executePc(Character *ch, Player* player)
     Room* room = ch->room();
 
     QString moveCmd = command();
-    QString moveStr;
-    QString arriveStr;
     RoomExit exit;
 
-    if (QObject::tr("nord").startsWith(moveCmd[0]))
+    if (QString("moven").startsWith(moveCmd))
     {
         exit = room->exitNorth();
-        moveStr = QObject::tr("nord");
-        arriveStr = QObject::tr("sud");
     }
-    else if (QObject::tr("sud").startsWith(moveCmd[0]))
+    else if (QString("moves").startsWith(moveCmd))
     {
         exit = room->exitSouth();
-        moveStr = QObject::tr("sud");
-        arriveStr = QObject::tr("nord");
     }
-    else if (QObject::tr("ovest").startsWith(moveCmd[0]))
+    else if (QString("movew").startsWith(moveCmd))
     {
         exit = room->exitWest();
-        moveStr = QObject::tr("ovest");
-        arriveStr = QObject::tr("est");
     }
-    else if (QObject::tr("est").startsWith(moveCmd[0]))
+    else if (QString("movee").startsWith(moveCmd))
     {
         exit = room->exitEast();
-        moveStr = QObject::tr("est");
-        arriveStr = QObject::tr("ovest");
     }
-    else if (QObject::tr("alto").startsWith(moveCmd[0]))
+    else if (QString("moveu").startsWith(moveCmd))
     {
         exit = room->exitUp();
-        moveStr = QObject::tr("alto");
-        arriveStr = QObject::tr("basso");
     }
-    else if (QObject::tr("basso").startsWith(moveCmd[0]))
+    else if (QString("moved").startsWith(moveCmd))
     {
         exit = room->exitDown();
-        moveStr = QObject::tr("basso");
-        arriveStr = QObject::tr("alto");
     }
 
     if (!exit.isValid())
-    {
-        if (player)
-        {
-            if (moveStr == QObject::tr("alto") || moveStr == QObject::tr("basso"))
-                player->sendLine(QObject::tr("Non puoi andare in %1").arg(moveStr));
-            else
-                player->sendLine(QObject::tr("Non puoi andare a %1").arg(moveStr));
-        }
         return;
-    }
 
     if (!exit.isOpen())
-    {
-        if (player)
-        {
-            if (exit.isHidden())
-            {
-                if (moveStr == QObject::tr("alto") || moveStr == QObject::tr("basso"))
-                    player->sendLine(QObject::tr("Non puoi andare in %1").arg(moveStr));
-                else
-                    player->sendLine(QObject::tr("Non puoi andare a %1").arg(moveStr));
-            }
-            else
-                player->sendLine(QObject::tr("E' chiuso"));
-        }
         return;
-    }
 
     Room* exitRoom = exit.exitRoom();
 
@@ -204,23 +167,6 @@ void CommandMove::executePc(Character *ch, Player* player)
 
     auto characters = room->characters();
 
-    QString msgOther;
-
-    if (moveStr == QObject::tr("alto") || moveStr == QObject::tr("basso"))
-    {
-        if (ch->hasTemporaryStatus(QMUD::TemporaryStatusType::FLY))
-            msgOther = QObject::tr("%1 vola in %2").arg(ch->name(Q_NULLPTR)).arg(moveStr);
-        else
-            msgOther = QObject::tr("%1 va in %2").arg(ch->name(Q_NULLPTR)).arg(moveStr);
-    }
-    else
-    {
-        if (ch->hasTemporaryStatus(QMUD::TemporaryStatusType::FLY))
-            msgOther = QObject::tr("%1 vola a %2").arg(ch->name(Q_NULLPTR)).arg(moveStr);
-        else
-            msgOther = QObject::tr("%1 va a %2").arg(ch->name(Q_NULLPTR)).arg(moveStr);
-    }
-
     for (Character* chInRoom : characters)
     {
         if (chInRoom != ch && chInRoom->canSee(ch))
@@ -229,7 +175,6 @@ void CommandMove::executePc(Character *ch, Player* player)
                     chInRoom->chFollowed() != ch->id())
             {
                 Player *playerOther = static_cast<PcCharacter*>(chInRoom)->player();
-                playerOther->sendLine(msgOther);
 
                 forceLook.insert(playerOther);
             }
@@ -260,25 +205,6 @@ void CommandMove::executePc(Character *ch, Player* player)
 
     auto exitRoomCharacters = exitRoom->characters();
 
-    if (ch->hasTemporaryStatus(QMUD::TemporaryStatusType::FLY))
-    {
-        if (moveStr == QObject::tr("alto"))
-            msgOther = QObject::tr("%1 arriva volando dall'alto").arg(ch->name(Q_NULLPTR));
-        else if (moveStr == QObject::tr("basso"))
-            msgOther = QObject::tr("%1 arriva volando dal basso").arg(ch->name(Q_NULLPTR));
-        else
-            msgOther = QObject::tr("%1 arriva volando da %2").arg(ch->name(Q_NULLPTR)).arg(arriveStr);
-    }
-    else
-    {
-        if (moveStr == QObject::tr("alto"))
-            msgOther = QObject::tr("%1 arriva dall'alto").arg(ch->name(Q_NULLPTR));
-        else if (moveStr == QObject::tr("basso"))
-            msgOther = QObject::tr("%1 arriva dal basso").arg(ch->name(Q_NULLPTR));
-        else
-            msgOther = QObject::tr("%1 arriva da %2").arg(ch->name(Q_NULLPTR)).arg(arriveStr);
-    }
-
     for (Character* chInRoom : exitRoomCharacters)
     {
         if (chInRoom != ch && chInRoom->canSee(ch))
@@ -288,8 +214,6 @@ void CommandMove::executePc(Character *ch, Player* player)
                 if (chInRoom->chType() == Character::ChType::CHTYPE_PC)
                 {
                     Player *playerOther = static_cast<PcCharacter*>(chInRoom)->player();
-
-                    playerOther->sendLine(msgOther);
 
                     forceLook.insert(playerOther);
                 }

@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/images">
+        <file>images/tmp_map.png</file>
+    </qresource>
+</RCC>

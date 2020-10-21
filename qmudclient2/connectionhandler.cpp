@@ -47,6 +47,36 @@ void ConnectionHandler::cmdConnect(QString chName)
     m_ptrConnection->send(QString("ch_connect %1").arg(chName));
 }
 
+void ConnectionHandler::cmdMoveNorth()
+{
+    m_ptrConnection->send(QString("moven"));
+}
+
+void ConnectionHandler::cmdMoveSouth()
+{
+    m_ptrConnection->send(QString("moves"));
+}
+
+void ConnectionHandler::cmdMoveWeast()
+{
+    m_ptrConnection->send(QString("movew"));
+}
+
+void ConnectionHandler::cmdMoveEast()
+{
+    m_ptrConnection->send(QString("movee"));
+}
+
+void ConnectionHandler::cmdMoveUp()
+{
+    m_ptrConnection->send(QString("moveu"));
+}
+
+void ConnectionHandler::cmdMoveDown()
+{
+    m_ptrConnection->send(QString("moved"));
+}
+
 bool ConnectionHandler::connectToHost()
 {
     if (!m_ptrConnection->isConnected())
@@ -167,6 +197,26 @@ void ConnectionHandler::onMessageReceived(QByteArray message)
                                                              elem.level(),
                                                              QMUD::classTypeToReadableString(elem.classType()),
                                                              QMUD::Race::toReadableString(elem.race())));
+        }
+        else if (pkt->type() == QMUD::ClientDataType::ROOM_INFO)
+        {
+            QMUD::ClientDataRoomInfo *data = static_cast<QMUD::ClientDataRoomInfo*>(pkt);
+
+            QPoint newPos = QPoint(data->x(), data->y());
+
+            if (newPos != m_ptPlayerPosition)
+            {
+                m_ptPlayerPosition = newPos;
+                emit playerPositionChange();
+            }
+
+            QPoint newMapId = QPoint(static_cast<int>(data->map()), static_cast<int>(data->index()));
+
+            if (newMapId != m_ptPlayerMapId)
+            {
+                m_ptPlayerMapId = newMapId;
+                emit playerMapIdChange();
+            }
         }
         else if (pkt->type() == QMUD::ClientDataType::LIFE)
         {
@@ -705,16 +755,6 @@ bool ConnectionHandler::isConnected() const
     return m_bIsConnected;
 }
 
-int ConnectionHandler::playerHpCurrent() const
-{
-    return m_iPlayerHpCurrent;
-}
-
-int ConnectionHandler::playerHpMaximum() const
-{
-    return m_iPlayerHpMaximum;
-}
-
 ConnectionHandler::PageType ConnectionHandler::currentPage() const
 {
     return m_eCurrentPage;
@@ -728,5 +768,25 @@ QString ConnectionHandler::lastErrorMessage() const
 QString ConnectionHandler::lastInfoMessage() const
 {
     return m_strLastInfoMessage;
+}
+
+QPoint ConnectionHandler::playerPosition() const
+{
+    return m_ptPlayerPosition;
+}
+
+QPoint ConnectionHandler::playerMapId() const
+{
+    return m_ptPlayerMapId;
+}
+
+int ConnectionHandler::playerHpCurrent() const
+{
+    return m_iPlayerHpCurrent;
+}
+
+int ConnectionHandler::playerHpMaximum() const
+{
+    return m_iPlayerHpMaximum;
 }
 

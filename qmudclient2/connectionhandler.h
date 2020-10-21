@@ -7,6 +7,7 @@
 
 #include "connection.h"
 #include "characterlistitemmodel.h"
+#include "../common.h"
 
 class ConnectionHandler : public QObject
 {
@@ -17,6 +18,9 @@ class ConnectionHandler : public QObject
     Q_PROPERTY(PageType currentPage READ currentPage NOTIFY currentPageChange)
     Q_PROPERTY(QString lastErrorMessage READ lastErrorMessage NOTIFY lastMessageChange)
     Q_PROPERTY(QString lastInfoMessage READ lastInfoMessage NOTIFY lastMessageChange)
+
+    Q_PROPERTY(QPoint playerPosition READ playerPosition NOTIFY playerPositionChange)
+    Q_PROPERTY(QPoint playerMapId READ playerMapId NOTIFY playerMapIdChange)
 
     Q_PROPERTY(int playerHpCurrent READ playerHpCurrent NOTIFY playerLifeChange)
     Q_PROPERTY(int playerHpMaximum READ playerHpMaximum NOTIFY playerLifeChange)
@@ -39,6 +43,12 @@ public:
     Q_INVOKABLE void cmdLogin(QString username, QString password);
     Q_INVOKABLE void cmdSignin(QString username, QString password);
     Q_INVOKABLE void cmdConnect(QString chName);
+    Q_INVOKABLE void cmdMoveNorth();
+    Q_INVOKABLE void cmdMoveSouth();
+    Q_INVOKABLE void cmdMoveWeast();
+    Q_INVOKABLE void cmdMoveEast();
+    Q_INVOKABLE void cmdMoveUp();
+    Q_INVOKABLE void cmdMoveDown();
 
 public slots:
     bool connectToHost();
@@ -48,6 +58,8 @@ signals:
     void currentPageChange();
     void lastMessageChange();
     void playerLifeChange();
+    void playerPositionChange();
+    void playerMapIdChange();
 
 private slots:
     void onConnected();
@@ -59,6 +71,9 @@ private slots:
     PageType currentPage() const;
     QString lastErrorMessage() const;
     QString lastInfoMessage() const;
+
+    QPoint playerPosition() const;
+    QPoint playerMapId() const;
 
     int playerHpCurrent() const;
     int playerHpMaximum() const;
@@ -73,6 +88,10 @@ private:
     PageType m_eCurrentPage;
     QString m_strLastErrorMessage;
     QString m_strLastInfoMessage;
+
+    // Mappa e posizione del player
+    QPoint m_ptPlayerPosition;
+    QPoint m_ptPlayerMapId;
 
     int m_iPlayerHpCurrent;
     int m_iPlayerHpMaximum;

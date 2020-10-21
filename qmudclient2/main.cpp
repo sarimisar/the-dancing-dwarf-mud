@@ -3,6 +3,7 @@
 #include <QQmlContext>
 
 #include "connectionhandler.h"
+#include "mapquickitem.h"
 
 int main(int argc, char *argv[])
 {
@@ -12,6 +13,7 @@ int main(int argc, char *argv[])
 
     ConnectionHandler::declareQML();
     CharacterListItemModel::declareQML();
+    MapQuickItem::declareQML();
 
     ConnectionHandler connectionHandler;
 
