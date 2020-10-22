@@ -40,6 +40,7 @@ Item {
         mapTailSize: "50x50"
         mapCenterPoint: connectionHandler.playerPosition
         mapId: connectionHandler.playerMapId
+        npcs: connectionHandler.npcs
     }
 
 }

@@ -1,5 +1,6 @@
 #include "connectionhandler.h"
 #include "../common.h"
+#include "mapquickitem.h"
 
 void ConnectionHandler::declareQML()
 {
@@ -216,6 +217,21 @@ void ConnectionHandler::onMessageReceived(QByteArray message)
             {
                 m_ptPlayerMapId = newMapId;
                 emit playerMapIdChange();
+            }
+
+            auto chs = data->chs();
+
+            QStringList chsList;
+
+            for (auto ch : chs)
+            {
+                chsList.push_back(MapQuickItem::npcDataToString(ch.id, ch.x, ch.y, ch.type, ch.name, ch.race));
+            }
+
+            if (chsList != m_vNpcs)
+            {
+                m_vNpcs = chsList;
+                emit npcsChange();
             }
         }
         else if (pkt->type() == QMUD::ClientDataType::LIFE)
@@ -788,5 +804,10 @@ int ConnectionHandler::playerHpCurrent() const
 int ConnectionHandler::playerHpMaximum() const
 {
     return m_iPlayerHpMaximum;
+}
+
+QStringList ConnectionHandler::npcs() const
+{
+    return m_vNpcs;
 }
 

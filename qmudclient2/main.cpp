@@ -1,13 +1,29 @@
-#include <QGuiApplication>
+#include <QApplication>
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
+#include <QGraphicsScene>
 
 #include "connectionhandler.h"
 #include "mapquickitem.h"
+#include "formloadresources.h"
+#include "resourcemanager.h"
 
 int main(int argc, char *argv[])
 {
+    {
+        QApplication app(argc, argv);
+
+        FormLoadResources wdg;
+        wdg.show();
+
+        ResourceManager::instance().loadResources(&wdg);
+
+        app.exec();
+    }
+
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
+    QCoreApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
+    QCoreApplication::setAttribute(Qt::AA_UseDesktopOpenGL);
 
     QGuiApplication app(argc, argv);
 

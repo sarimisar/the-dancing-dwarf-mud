@@ -1,4 +1,4 @@
-QT += quick
+QT += quick widgets
 
 CONFIG += c++11
 
@@ -18,8 +18,10 @@ SOURCES += \
         characterlistitemmodel.cpp \
         connection.cpp \
         connectionhandler.cpp \
+        formloadresources.cpp \
         main.cpp \
-        mapquickitem.cpp
+        mapquickitem.cpp \
+        resourcemanager.cpp
 
 RESOURCES += qml.qrc \
     resource.qrc
@@ -43,4 +45,9 @@ HEADERS += \
     characterlistitemmodel.h \
     connection.h \
     connectionhandler.h \
-    mapquickitem.h
+    formloadresources.h \
+    mapquickitem.h \
+    resourcemanager.h
+
+FORMS += \
+    formloadresources.ui

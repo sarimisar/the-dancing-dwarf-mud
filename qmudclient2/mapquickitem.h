@@ -3,6 +3,11 @@
 
 #include <QQuickItem>
 #include <QPixmap>
+#include <QSGSimpleTextureNode>
+
+#include "../common.h"
+
+class FormLoadResources;
 
 class MapQuickItem : public QQuickItem
 {
@@ -17,10 +22,15 @@ class MapQuickItem : public QQuickItem
     Q_PROPERTY(QSize mapTailSize READ mapTailSize WRITE setMapTailSize NOTIFY mapTailSizeChanged)
     Q_PROPERTY(QPoint mapCenterPoint READ mapCenterPoint WRITE setMapCenterPoint NOTIFY mapCenterPointChanged)
 
+    Q_PROPERTY(QStringList npcs READ npcs WRITE setNpcs NOTIFY npcsChange)
+
 public:
     MapQuickItem(QQuickItem *parent = Q_NULLPTR);
 
     static void declareQML();
+
+    static QString npcDataToString(quint64 id, int x, int y, QMUD::ClientDataRoomInfo::ChType type, QString name, QMUD::RaceType race);
+    static void npcDataFromString(QString str, quint64& id, int& x, int& y, QMUD::ClientDataRoomInfo::ChType& type, QString& name, QMUD::RaceType &race);
 
 protected:
     QSGNode *updatePaintNode(QSGNode *oldNode, UpdatePaintNodeData *updatePaintNodeData) override;
@@ -44,6 +54,9 @@ protected:
     QPoint mapCenterPoint() const;
     void setMapCenterPoint(const QPoint &point);
 
+    QStringList npcs() const;
+    void setNpcs(QStringList npcs);
+
 signals:
     void backgroundChanged();
     void zoomFactorChanged();
@@ -51,8 +64,29 @@ signals:
     void mapIdChanged();
     void mapTailSizeChanged();
     void mapCenterPointChanged();
+    void npcsChange();
 
 private:
+    QSGSimpleTextureNode *m_ptrMapImageLevel0Node;
+    QSGOpacityNode *m_ptrPcNpcNode;
+    QSGSimpleTextureNode *m_ptrMapImageLevel1Node;
+    QSGSimpleTextureNode *m_ptrPlayerNode;
+
+    struct NpcNodeData
+    {
+        QString toString() const;
+        void fromString(QString str);
+
+        QSGSimpleTextureNode* node;
+        QPoint position;
+        quint64 index;
+        QMUD::ClientDataRoomInfo::ChType type;
+        QString name;
+        QMUD::RaceType race;
+    };
+
+    QMap<quint64, NpcNodeData> m_npcsNodes;
+
     bool m_bNeedUpdateGeometry;
     bool m_bNeedUpdateBackground;
     bool m_bNeedUpdateZoomFactor;
@@ -60,6 +94,7 @@ private:
     bool m_bNeedUpdateMapId;
     bool m_bNeedUpdateMapTailSize;
     bool m_bNeedUpdateMapCenterPoint;
+    bool m_bNeedUpdateNpcs;
 
     QColor m_backgroundColor;
     qreal m_rZoomFactor;
@@ -78,6 +113,8 @@ private:
     };
 
     QVector<LoadedMapData> m_vLoadedMaps;
+
+    QStringList m_vNpcs;
 };
 
 #endif // MAPQUICKITEM_H

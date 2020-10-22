@@ -25,6 +25,8 @@ class ConnectionHandler : public QObject
     Q_PROPERTY(int playerHpCurrent READ playerHpCurrent NOTIFY playerLifeChange)
     Q_PROPERTY(int playerHpMaximum READ playerHpMaximum NOTIFY playerLifeChange)
 
+    Q_PROPERTY(QStringList npcs READ npcs NOTIFY npcsChange)
+
 public:
     enum class PageType
     {
@@ -60,6 +62,7 @@ signals:
     void playerLifeChange();
     void playerPositionChange();
     void playerMapIdChange();
+    void npcsChange();
 
 private slots:
     void onConnected();
@@ -78,6 +81,8 @@ private slots:
     int playerHpCurrent() const;
     int playerHpMaximum() const;
 
+    QStringList npcs() const;
+
 private:
     Connection *m_ptrConnection;
 
@@ -95,6 +100,8 @@ private:
 
     int m_iPlayerHpCurrent;
     int m_iPlayerHpMaximum;
+
+    QStringList m_vNpcs;
 };
 
 #endif // CONNECTIONHANDLER_H
