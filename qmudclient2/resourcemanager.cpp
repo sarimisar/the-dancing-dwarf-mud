@@ -8,6 +8,8 @@
 #include <QDebug>
 #include <QGraphicsScene>
 #include <QGraphicsPixmapItem>
+#include <QSGTexture>
+#include <QQuickWindow>
 
 ResourceManager &ResourceManager::instance()
 {
@@ -179,4 +181,30 @@ QImage ResourceManager::orangeCircle() const
 ResourceManager::ResourceManager()
 {
 
+}
+
+const ResourceManager::LoadedMapData &ResourceManager::map(QPoint id, QQuickWindow *wnd)
+{
+    for (auto& mapData : m_vLoadedMaps)
+        if (mapData.id == id)
+            return mapData;
+
+    LoadedMapData mapData;
+    mapData.id = id;
+
+    QString fileMapLevel0 = QString("./maps/%1_%2_%3.png").arg(id.x()).arg(id.y()).arg(0);
+    QString fileMapLevel1 = QString("./maps/%1_%2_%3.png").arg(id.x()).arg(id.y()).arg(1);
+
+    QImage imageLevel0 = QImage(fileMapLevel0);
+    QImage imageLevel1 = QImage(fileMapLevel1);
+
+    mapData.textureLevel0 = wnd->createTextureFromImage(imageLevel0);
+    mapData.textureLevel1 = wnd->createTextureFromImage(imageLevel1);
+
+    m_vLoadedMaps.push_back(mapData);
+
+    if (m_vLoadedMaps.size() > 10)
+        m_vLoadedMaps.pop_front();
+
+    return m_vLoadedMaps.back();
 }

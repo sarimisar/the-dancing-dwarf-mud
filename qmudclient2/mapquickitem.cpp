@@ -12,6 +12,9 @@
 #include <QGraphicsScene>
 #include <QFlags>
 #include <QThread>
+#include <QTextLayout>
+#include <private/qquicktextnode_p.h>
+#include <QFontMetrics>
 
 #include "resourcemanager.h"
 
@@ -21,6 +24,7 @@ MapQuickItem::MapQuickItem(QQuickItem *parent) :
     m_ptrPcNpcNode(Q_NULLPTR),
     m_ptrMapImageLevel1Node(Q_NULLPTR),
     m_ptrPlayerNode(Q_NULLPTR),
+    m_bNeedUpdateMiniMap(true),
     m_bNeedUpdateGeometry(true),
     m_bNeedUpdateBackground(true),
     m_bNeedUpdateZoomFactor(true),
@@ -29,12 +33,16 @@ MapQuickItem::MapQuickItem(QQuickItem *parent) :
     m_bNeedUpdateMapTailSize(true),
     m_bNeedUpdateMapCenterPoint(true),
     m_bNeedUpdateNpcs(true),
+    m_bMiniMap(false),
     m_rZoomFactor(1.0),
     m_iTailSizePx(80),
     m_mapTailSize(QSize(50, 50)),
     m_mapCenterPoint(QPoint(24, 24))
 {
     setFlag(QQuickItem::ItemHasContents);
+
+    m_font.setPointSize(10);
+    m_font.setFamily("Cooper Black");
 }
 
 void MapQuickItem::declareQML()
@@ -44,7 +52,7 @@ void MapQuickItem::declareQML()
 
 QString MapQuickItem::npcDataToString(quint64 id, int x, int y, QMUD::ClientDataRoomInfo::ChType type, QString name, QMUD::RaceType race)
 {
-    return QString("%1,%2,%3,%4,%4,%6")
+    return QString("%1,%2,%3,%4,%5,%6")
             .arg(id)
             .arg(x)
             .arg(y)
@@ -79,13 +87,12 @@ QSGNode *MapQuickItem::updatePaintNode(QSGNode *oldNode, QQuickItem::UpdatePaint
 
         // Map image level 0
         m_ptrMapImageLevel0Node = new QSGSimpleTextureNode();
-        m_ptrMapImageLevel0Node->setOwnsTexture(true);
         m_ptrMapImageLevel0Node->setFiltering(QSGTexture::Linear);
-        m_ptrMapImageLevel0Node->setTexture(window()->createTextureFromImage(m_mapImageLevel0));
         root->appendChildNode(m_ptrMapImageLevel0Node);
 
         // PC/NPC
         m_ptrPcNpcNode = new QSGOpacityNode();
+
         m_ptrPcNpcNode->setOpacity(0.8);
         m_ptrMapImageLevel0Node->appendChildNode(m_ptrPcNpcNode);
 
@@ -99,9 +106,7 @@ QSGNode *MapQuickItem::updatePaintNode(QSGNode *oldNode, QQuickItem::UpdatePaint
 
         // Map Image level 1
         m_ptrMapImageLevel1Node = new QSGSimpleTextureNode();
-        m_ptrMapImageLevel1Node->setOwnsTexture(true);
         m_ptrMapImageLevel1Node->setFiltering(QSGTexture::Linear);
-        m_ptrMapImageLevel1Node->setTexture(window()->createTextureFromImage(m_mapImageLevel1));
         m_ptrPcNpcNode->appendChildNode(m_ptrMapImageLevel1Node);
     }
 
@@ -122,8 +127,8 @@ QSGNode *MapQuickItem::updatePaintNode(QSGNode *oldNode, QQuickItem::UpdatePaint
 
     if (m_bNeedUpdateMapId)
     {
-        m_ptrMapImageLevel0Node->setTexture(window()->createTextureFromImage(m_mapImageLevel0));
-        m_ptrMapImageLevel1Node->setTexture(window()->createTextureFromImage(m_mapImageLevel1));
+        m_ptrMapImageLevel0Node->setTexture(ResourceManager::instance().map(m_mapId, window()).textureLevel0);
+        m_ptrMapImageLevel1Node->setTexture(ResourceManager::instance().map(m_mapId, window()).textureLevel1);
 
         m_bNeedUpdateMapId = false;
 
@@ -149,8 +154,8 @@ QSGNode *MapQuickItem::updatePaintNode(QSGNode *oldNode, QQuickItem::UpdatePaint
         m_ptrMapImageLevel1Node->setRect(x, y, imageSize.width(), imageSize.height());
 
         QPointF windowCenter(width() / 2.0, height() / 2.0);
-        QRectF windowCenterRect((windowCenter.x() - m_iTailSizePx / 2.0) * m_rZoomFactor,
-                                (windowCenter.y() - m_iTailSizePx / 2.0) * m_rZoomFactor,
+        QRectF windowCenterRect(windowCenter.x() - m_iTailSizePx / 2.0 * m_rZoomFactor,
+                                windowCenter.y() - m_iTailSizePx / 2.0 * m_rZoomFactor,
                                 m_iTailSizePx * m_rZoomFactor,
                                 m_iTailSizePx * m_rZoomFactor);
 
@@ -161,11 +166,12 @@ QSGNode *MapQuickItem::updatePaintNode(QSGNode *oldNode, QQuickItem::UpdatePaint
         updateNpcsPosition = true;
     }
 
-    if (m_bNeedUpdateNpcs)
+    if (m_bNeedUpdateNpcs || m_bNeedUpdateMiniMap)
     {
-        QVector<QSGSimpleTextureNode*> notRemove;
+        QFontMetrics fontMetrics(m_font);
+        int leading = fontMetrics.leading();
 
-        qDebug() << m_vNpcs;
+        QVector<QSGSimpleTextureNode*> notRemove;
 
         for (auto strNpc : m_vNpcs)
         {
@@ -176,27 +182,58 @@ QSGNode *MapQuickItem::updatePaintNode(QSGNode *oldNode, QQuickItem::UpdatePaint
             if (it != m_npcsNodes.end())
             {
                 it.value().position = data.position;
-
                 notRemove.push_back(it.value().node);
             }
             else
             {
-                QSGSimpleTextureNode *node = new QSGSimpleTextureNode();
-                node->setFiltering(QSGTexture::Linear);
+                data.node = new QSGSimpleTextureNode();
+                data.node->setFiltering(QSGTexture::Linear);
 
                 if (data.type == QMUD::ClientDataRoomInfo::ChType::NPC)
-                    node->setTexture(window()->createTextureFromImage(ResourceManager::instance().orangeCircle()));
+                    data.node->setTexture(window()->createTextureFromImage(ResourceManager::instance().orangeCircle()));
                 else if (data.type == QMUD::ClientDataRoomInfo::ChType::PLAYER)
-                    node->setTexture(window()->createTextureFromImage(ResourceManager::instance().blueCircle()));
+                    data.node->setTexture(window()->createTextureFromImage(ResourceManager::instance().blueCircle()));
                 else
-                    node->setTexture(window()->createTextureFromImage(ResourceManager::instance().redCircle()));
+                    data.node->setTexture(window()->createTextureFromImage(ResourceManager::instance().redCircle()));
 
-                m_ptrPcNpcNode->insertChildNodeBefore(node, m_ptrPlayerNode);
+                m_ptrPcNpcNode->insertChildNodeBefore(data.node, m_ptrPlayerNode);
 
-                data.node = node;
+                if (!m_bMiniMap)
+                {
+                    QString textLevel = QString("[%1]").arg(10);
+                    QString textName = QString("%1").arg(data.name);
+
+                    data.textLayoutLevel = new QTextLayout();
+                    data.textLayoutLevel->setText(textLevel);
+                    data.textLayoutLevel->setFont(m_font);
+                    data.textLayoutLevel->beginLayout();
+                    QTextLine lineLevel = data.textLayoutLevel->createLine();
+                    lineLevel.setLineWidth(80);
+                    lineLevel.setPosition(QPointF((80.0 - fontMetrics.boundingRect(textLevel).width()) / 2.0, leading));
+                    data.textLayoutLevel->endLayout();
+
+                    data.textLayoutName = new QTextLayout();
+                    data.textLayoutName->setText(textName);
+                    data.textLayoutName->setFont(m_font);
+                    data.textLayoutName->beginLayout();
+                    QTextLine lineName = data.textLayoutName->createLine();
+                    lineName.setLineWidth(80);
+                    lineName.setPosition(QPointF((80.0 - fontMetrics.boundingRect(textName).width()) / 2.0, leading));
+                    data.textLayoutName->endLayout();
+
+                    data.textNode = new QQuickTextNode(this);
+                    data.node->appendChildNode(data.textNode);
+                }
+                else
+                {
+                    data.textNode = Q_NULLPTR;
+                    data.textLayoutName = Q_NULLPTR;
+                    data.textLayoutLevel = Q_NULLPTR;
+                }
+
                 m_npcsNodes[data.index] = data;
 
-                notRemove.push_back(node);
+                notRemove.push_back(data.node);
             }
         }
 
@@ -205,6 +242,10 @@ QSGNode *MapQuickItem::updatePaintNode(QSGNode *oldNode, QQuickItem::UpdatePaint
             if (!notRemove.contains(it.value().node))
             {
                 m_ptrPcNpcNode->removeChildNode(it.value().node);
+                if (it.value().textLayoutName)
+                    delete it.value().textLayoutName;
+                if (it.value().textLayoutLevel)
+                    delete it.value().textLayoutLevel;
                 it = m_npcsNodes.erase(it);
             }
             else if (it != m_npcsNodes.end())
@@ -239,8 +280,22 @@ QSGNode *MapQuickItem::updatePaintNode(QSGNode *oldNode, QQuickItem::UpdatePaint
                                 m_iTailSizePx * m_rZoomFactor);
 
             it.value().node->setRect(positionRect);
+
+            if (!m_bMiniMap)
+            {
+                it.value().textNode->removeAllChildNodes();
+                it.value().textNode->addTextLayout(positionRect.topLeft() + QPointF(0.0, 20.0), it.value().textLayoutLevel, Qt::white, QQuickText::Outline);
+                it.value().textNode->addTextLayout(positionRect.topLeft() + QPointF(0.0, 35.0), it.value().textLayoutName, Qt::white, QQuickText::Outline);
+            }
+            else
+            {
+                if (it.value().textNode)
+                    it.value().textNode->removeAllChildNodes();
+            }
         }
     }
+
+    m_bNeedUpdateMiniMap = false;
 
 
     return root;
@@ -252,6 +307,24 @@ void MapQuickItem::geometryChanged(const QRectF &newGeometry, const QRectF &oldG
     {
         m_bNeedUpdateGeometry = true;
         update();
+    }
+}
+
+bool MapQuickItem::miniMap() const
+{
+    return m_bMiniMap;
+}
+
+void MapQuickItem::setMiniMap(bool miniMap)
+{
+    if (m_bMiniMap != miniMap)
+    {
+        m_bMiniMap = miniMap;
+        m_bNeedUpdateMiniMap = true;
+
+        update();
+
+        emit miniMapChange();
     }
 }
 
@@ -280,7 +353,7 @@ qreal MapQuickItem::zoomFactor() const
 
 void MapQuickItem::setZoomFactor(qreal factor)
 {
-    if (qFuzzyCompare(m_rZoomFactor, factor))
+    if (!qFuzzyCompare(m_rZoomFactor, factor))
     {
         m_rZoomFactor = factor;
         m_bNeedUpdateZoomFactor = true;
@@ -316,44 +389,15 @@ QPoint MapQuickItem::mapId() const
 
 void MapQuickItem::setMapId(QPoint id)
 {
-    m_mapId = id;
-
-    bool found = false;
-
-    for (auto mapData : m_vLoadedMaps)
-        if (mapData.id == id)
-        {
-            m_mapImageLevel0 = mapData.imageLevel0;
-            m_mapImageLevel1 = mapData.imageLevel1;
-            found = true;
-            break;
-        }
-
-    if (!found)
+    if (m_mapId != id)
     {
-        LoadedMapData mapData;
-        mapData.id = id;
+        m_mapId = id;
+        m_bNeedUpdateMapId = true;
 
-        QString fileMapLevel0 = QString("./maps/%1_%2_%3.png").arg(id.x()).arg(id.y()).arg(0);
-        QString fileMapLevel1 = QString("./maps/%1_%2_%3.png").arg(id.x()).arg(id.y()).arg(1);
+        update();
 
-        mapData.imageLevel0 = QImage(fileMapLevel0);
-        mapData.imageLevel1 = QImage(fileMapLevel1);
-
-        m_mapImageLevel0 = mapData.imageLevel0;
-        m_mapImageLevel1 = mapData.imageLevel1;
-
-        m_vLoadedMaps.push_back(mapData);
-
-        if (m_vLoadedMaps.size() > 5)
-            m_vLoadedMaps.pop_front();
+        emit mapIdChanged();
     }
-
-    m_bNeedUpdateMapId = true;
-
-    update();
-
-    emit mapIdChanged();
 }
 
 QSize MapQuickItem::mapTailSize() const

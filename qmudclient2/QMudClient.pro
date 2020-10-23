@@ -1,4 +1,4 @@
-QT += quick widgets
+QT += quick widgets quick-private
 
 CONFIG += c++11
 

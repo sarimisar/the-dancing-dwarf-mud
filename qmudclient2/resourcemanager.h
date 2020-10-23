@@ -3,7 +3,10 @@
 
 #include <QImage>
 
+
 class FormLoadResources;
+class QSGTexture;
+class QQuickWindow;
 
 class ResourceManager
 {
@@ -24,11 +27,27 @@ public:
     ResourceManager(ResourceManager const&) = delete;
     void operator=(ResourceManager const&)  = delete;
 
+    struct LoadedMapData
+    {
+        LoadedMapData() :
+            textureLevel0(Q_NULLPTR),
+            textureLevel1(Q_NULLPTR)
+        {}
+
+        QSGTexture *textureLevel0;
+        QSGTexture *textureLevel1;
+        QPoint id;
+    };
+
+    const LoadedMapData &map(QPoint id, QQuickWindow* wnd);
+
 private:
     QImage m_whiteCircle;
     QImage m_redCircle;
     QImage m_blueCircle;
     QImage m_orangeCircle;
+
+    QVector<LoadedMapData> m_vLoadedMaps;
 };
 
 #endif // RESOURCEMANAGER_H

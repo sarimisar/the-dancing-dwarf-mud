@@ -7,5 +7,7 @@
         <file>PageLogin.qml</file>
         <file>PageCharactersList.qml</file>
         <file>PageInGame.qml</file>
+        <file>QMudProgressBar.qml</file>
+        <file>QMudChInfo.qml</file>
     </qresource>
 </RCC>

@@ -8,10 +8,14 @@
 #include "../common.h"
 
 class FormLoadResources;
+class QTextLayout;
+class QQuickTextNode;
 
 class MapQuickItem : public QQuickItem
 {
     Q_OBJECT
+
+    Q_PROPERTY(bool miniMap READ miniMap WRITE setMiniMap NOTIFY miniMapChange)
 
     Q_PROPERTY(QColor background READ background WRITE setBackground NOTIFY backgroundChanged)
 
@@ -36,6 +40,9 @@ protected:
     QSGNode *updatePaintNode(QSGNode *oldNode, UpdatePaintNodeData *updatePaintNodeData) override;
     void geometryChanged(const QRectF &newGeometry, const QRectF &oldGeometry) override;
 
+    bool miniMap() const;
+    void setMiniMap(bool miniMap);
+
     QColor background() const;
     void setBackground(const QColor &color);
 
@@ -58,6 +65,7 @@ protected:
     void setNpcs(QStringList npcs);
 
 signals:
+    void miniMapChange();
     void backgroundChanged();
     void zoomFactorChanged();
     void tailSizePxChanged();
@@ -78,6 +86,9 @@ private:
         void fromString(QString str);
 
         QSGSimpleTextureNode* node;
+        QQuickTextNode* textNode;
+        QTextLayout *textLayoutLevel;
+        QTextLayout *textLayoutName;
         QPoint position;
         quint64 index;
         QMUD::ClientDataRoomInfo::ChType type;
@@ -87,6 +98,7 @@ private:
 
     QMap<quint64, NpcNodeData> m_npcsNodes;
 
+    bool m_bNeedUpdateMiniMap;
     bool m_bNeedUpdateGeometry;
     bool m_bNeedUpdateBackground;
     bool m_bNeedUpdateZoomFactor;
@@ -96,25 +108,18 @@ private:
     bool m_bNeedUpdateMapCenterPoint;
     bool m_bNeedUpdateNpcs;
 
+    bool m_bMiniMap;
     QColor m_backgroundColor;
     qreal m_rZoomFactor;
     int m_iTailSizePx;
     QSize m_mapTailSize;
     QPoint m_mapId;
-    QImage m_mapImageLevel0;
-    QImage m_mapImageLevel1;
     QPoint m_mapCenterPoint;
 
-    struct LoadedMapData
-    {
-        QImage imageLevel0;
-        QImage imageLevel1;
-        QPoint id;
-    };
-
-    QVector<LoadedMapData> m_vLoadedMaps;
-
     QStringList m_vNpcs;
+
+    // Text
+    QFont m_font;
 };
 
 #endif // MAPQUICKITEM_H

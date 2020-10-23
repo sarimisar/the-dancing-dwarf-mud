@@ -12,9 +12,6 @@ Item {
         anchors.fill: parent
         focus: true
         Keys.onPressed: {
-            console.debug("Premuto")
-            console.debug(event.key)
-
             if (event.key === Qt.Key_8)
                 connectionHandler.cmdMoveNorth();
             else if (event.key === Qt.Key_2)
@@ -30,6 +27,7 @@ Item {
         }
     }
 
+    // Main Map
     QMudMap {
         anchors.fill: parent
 
@@ -43,4 +41,43 @@ Item {
         npcs: connectionHandler.npcs
     }
 
+    // Mini Map
+    Rectangle {
+        id: miniMap
+        width: 250
+        height: 250
+        x: parent.width - width - 15
+        y: 15
+        border.color: "#FFFFFF"
+        border.width: 2
+
+        QMudMap {
+            anchors.fill: parent
+            anchors.margins: 2
+            clip: true
+
+            miniMap: true
+
+            tailSizePx: 80
+            zoomFactor: 0.05
+            background: "#333333"
+
+            mapTailSize: "50x50"
+            mapCenterPoint: connectionHandler.playerPosition
+            mapId: connectionHandler.playerMapId
+            npcs: connectionHandler.npcs
+        }
+    }
+
+    QMudChInfo {
+        id: playerInfo
+        width: 250
+        height: 100
+        x: parent.width / 2.0 - width * 1.5
+        y: parent.height - 200
+
+        valueHp: 0.5//connectionHandler.playerHpCurrent / connectionHandler.playerHpMaximum
+        valueMp: 0.3//connectionHandler.playerHpCurrent / connectionHandler.playerHpMaximum
+        valueAp: connectionHandler.playerHpCurrent / connectionHandler.playerHpMaximum
+    }
 }
