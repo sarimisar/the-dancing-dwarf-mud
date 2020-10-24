@@ -1,6 +1,7 @@
 import QtQuick 2.12
 import QtQuick.Controls 2.12
 import QtQuick.Layouts 1.12
+import QtGraphicalEffects 1.0
 
 import qmudmapquickitem.qml 1.0
 
@@ -50,11 +51,27 @@ Item {
         y: 15
         border.color: "#FFFFFF"
         border.width: 2
+        radius: width / 2
 
         QMudMap {
+            id: qmudminimap
             anchors.fill: parent
             anchors.margins: 2
             clip: true
+            layer.enabled: true
+
+            layer.effect: OpacityMask {
+                maskSource: Item {
+                    width: qmudminimap.width
+                    height: qmudminimap.height
+                    Rectangle {
+                        anchors.centerIn: parent
+                        width: qmudminimap.width
+                        height: qmudminimap.height
+                        radius: Math.min(width, height)
+                    }
+                }
+            }
 
             miniMap: true
 
@@ -69,6 +86,7 @@ Item {
         }
     }
 
+    // Player information
     QMudChInfo {
         id: playerInfo
         width: 250
@@ -76,8 +94,46 @@ Item {
         x: parent.width / 2.0 - width * 1.5
         y: parent.height - 200
 
-        valueHp: 0.5//connectionHandler.playerHpCurrent / connectionHandler.playerHpMaximum
-        valueMp: 0.3//connectionHandler.playerHpCurrent / connectionHandler.playerHpMaximum
-        valueAp: connectionHandler.playerHpCurrent / connectionHandler.playerHpMaximum
+        name: connectionHandler.playerName.toString().charAt(0).toUpperCase() +
+              connectionHandler.playerName.toString().substring(1)
+
+        valueHp: connectionHandler.playerHpCurrent / connectionHandler.playerHpMaximum
+        textHp: connectionHandler.playerHpCurrent + " / " + connectionHandler.playerHpMaximum
+        valueMp: connectionHandler.playerMpCurrent / connectionHandler.playerMpMaximum
+        textMp: connectionHandler.playerMpCurrent + " / " + connectionHandler.playerMpMaximum
+        valueAp: connectionHandler.playerApCurrent / connectionHandler.playerApMaximum
+        textAp: connectionHandler.playerApCurrent + " / " + connectionHandler.playerApMaximum
+    }
+
+    // Target information
+    QMudChInfo {
+        id: targetInfo
+        width: 250
+        height: 100
+        x: parent.width / 2.0 + width * 0.5
+        y: parent.height - 200
+
+        name: connectionHandler.playerName.toString().charAt(0).toUpperCase() +
+              connectionHandler.playerName.toString().substring(1)
+
+        valueHp: connectionHandler.playerHpCurrent / connectionHandler.playerHpMaximum
+        textHp: connectionHandler.playerHpCurrent + " / " + connectionHandler.playerHpMaximum
+        valueMp: connectionHandler.playerMpCurrent / connectionHandler.playerMpMaximum
+        textMp: connectionHandler.playerMpCurrent + " / " + connectionHandler.playerMpMaximum
+        valueAp: connectionHandler.playerApCurrent / connectionHandler.playerApMaximum
+        textAp: connectionHandler.playerApCurrent + " / " + connectionHandler.playerApMaximum
+    }
+
+    // Experience bar
+    QMudProgressBar {
+        width: (parent.width - miniMap.width * 2) * 0.8
+        height: 10
+        anchors.horizontalCenter: parent.horizontalCenter
+        y: 5
+        bgColor: "darkgray"
+        color: "darkmagenta"
+        text: connectionHandler.playerExperience + " / " + connectionHandler.playerExperienceToLevelUp
+        font.pointSize: 6
+        value: connectionHandler.playerExperience / connectionHandler.playerExperienceToLevelUp
     }
 }

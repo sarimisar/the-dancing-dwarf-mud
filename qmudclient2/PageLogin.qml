@@ -6,7 +6,7 @@ Item {
     // Animazione messaggi di errore e info
     Connections {
         target: connectionHandler
-        onLastMessageChange: {
+        onLastMessageChange: function onFoo() {
             labelErrorMessage.blink()
             labelInfoMessage.blink()
         }

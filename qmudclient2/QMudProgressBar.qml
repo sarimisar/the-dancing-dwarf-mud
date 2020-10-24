@@ -6,6 +6,7 @@ ProgressBar {
 
     property color bgColor: "#88868686"
     property color color: "#EE3333"
+    property string text: ""
 
     background: Rectangle {
         anchors.fill: parent
@@ -26,6 +27,17 @@ ProgressBar {
             y: 0
             radius: 4
             color: control.color
+        }
+
+        QMudLabel {
+            color: "#000000"
+            text: control.text
+            font.pointSize: 10
+
+            horizontalAlignment: Text.AlignHCenter
+
+            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.verticalCenter: parent.verticalCenter
         }
     }
 }

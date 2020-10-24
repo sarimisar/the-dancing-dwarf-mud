@@ -4,6 +4,7 @@
 #include <QObject>
 #include <QQmlEngine>
 #include <QQmlContext>
+#include <QPoint>
 
 #include "connection.h"
 #include "characterlistitemmodel.h"
@@ -22,8 +23,19 @@ class ConnectionHandler : public QObject
     Q_PROPERTY(QPoint playerPosition READ playerPosition NOTIFY playerPositionChange)
     Q_PROPERTY(QPoint playerMapId READ playerMapId NOTIFY playerMapIdChange)
 
+    Q_PROPERTY(QString playerName READ playerName NOTIFY playerBasicInfoChange)
+    Q_PROPERTY(int playerLevel READ playerLevel NOTIFY playerBasicInfoChange)
+    Q_PROPERTY(QString playerClass READ playerClass NOTIFY playerBasicInfoChange)
+    Q_PROPERTY(QString playerRace READ playerRace NOTIFY playerBasicInfoChange)
+    Q_PROPERTY(int playerExperience READ playerExperience NOTIFY playerBasicInfoChange)
+    Q_PROPERTY(int playerExperienceToLevelUp READ playerExperienceToLevelUp NOTIFY playerBasicInfoChange)
+
     Q_PROPERTY(int playerHpCurrent READ playerHpCurrent NOTIFY playerLifeChange)
     Q_PROPERTY(int playerHpMaximum READ playerHpMaximum NOTIFY playerLifeChange)
+    Q_PROPERTY(int playerMpCurrent READ playerMpCurrent NOTIFY playerLifeChange)
+    Q_PROPERTY(int playerMpMaximum READ playerMpMaximum NOTIFY playerLifeChange)
+    Q_PROPERTY(int playerApCurrent READ playerApCurrent NOTIFY playerLifeChange)
+    Q_PROPERTY(int playerApMaximum READ playerApMaximum NOTIFY playerLifeChange)
 
     Q_PROPERTY(QStringList npcs READ npcs NOTIFY npcsChange)
 
@@ -59,6 +71,7 @@ signals:
     void connectionStatusChange();
     void currentPageChange();
     void lastMessageChange();
+    void playerBasicInfoChange();
     void playerLifeChange();
     void playerPositionChange();
     void playerMapIdChange();
@@ -78,8 +91,19 @@ private slots:
     QPoint playerPosition() const;
     QPoint playerMapId() const;
 
+    QString playerName() const;
+    int playerLevel() const;
+    QString playerClass() const;
+    QString playerRace() const;
+    int playerExperience() const;
+    int playerExperienceToLevelUp() const;
+
     int playerHpCurrent() const;
     int playerHpMaximum() const;
+    int playerMpCurrent() const;
+    int playerMpMaximum() const;
+    int playerApCurrent() const;
+    int playerApMaximum() const;
 
     QStringList npcs() const;
 
@@ -98,8 +122,21 @@ private:
     QPoint m_ptPlayerPosition;
     QPoint m_ptPlayerMapId;
 
+    // Player basic info
+    QString m_strPlayerName;
+    int m_iPlayerLevel;
+    QString m_strPlayerClass;
+    QString m_strPlayerRace;
+    int m_iPlayerExperience;
+    int m_iPlayerExperienceToLevelUp;
+
+    // Player info
     int m_iPlayerHpCurrent;
     int m_iPlayerHpMaximum;
+    int m_iPlayerMpCurrent;
+    int m_iPlayerMpMaximum;
+    int m_iPlayerApCurrent;
+    int m_iPlayerApMaximum;
 
     QStringList m_vNpcs;
 };

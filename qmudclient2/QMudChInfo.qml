@@ -11,6 +11,12 @@ Item {
     property alias valueMp: progressBarMp.value
     property alias valueAp: progressBarAp.value
 
+    property alias textHp: progressBarHp.text
+    property alias textMp: progressBarMp.text
+    property alias textAp: progressBarAp.text
+
+    property alias name: chName.text
+
     Column
     {
         spacing: 3
@@ -19,7 +25,6 @@ Item {
             height: 25
             leftPadding: 5
             width: control.width
-            text: "Ramyel"
             verticalAlignment: Text.AlignVCenter
             color: "#FFFFFF"
 

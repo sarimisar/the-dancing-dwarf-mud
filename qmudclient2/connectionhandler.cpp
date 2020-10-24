@@ -17,8 +17,15 @@ ConnectionHandler::ConnectionHandler(QObject *parent) :
     m_ptrConnection(new Connection(this)),
     m_bIsConnected(false),
     m_eCurrentPage(PageType::LOGIN),
+    m_iPlayerLevel(0),
+    m_iPlayerExperience(0),
+    m_iPlayerExperienceToLevelUp(0),
     m_iPlayerHpCurrent(0),
-    m_iPlayerHpMaximum(0)
+    m_iPlayerHpMaximum(0),
+    m_iPlayerMpCurrent(0),
+    m_iPlayerMpMaximum(0),
+    m_iPlayerApCurrent(0),
+    m_iPlayerApMaximum(0)
 {
     connect(m_ptrConnection, &Connection::connected, this, &ConnectionHandler::onConnected);
     connect(m_ptrConnection, &Connection::disconnected, this, &ConnectionHandler::onDisconnected);
@@ -240,36 +247,26 @@ void ConnectionHandler::onMessageReceived(QByteArray message)
 
             m_iPlayerHpCurrent = data->hpCurrent();
             m_iPlayerHpMaximum = data->hpCurrentMaximum();
+            m_iPlayerMpCurrent = data->mpCurrent();
+            m_iPlayerMpMaximum = data->mpCurrentMaximum();
+            m_iPlayerApCurrent = data->apCurrent();
+            m_iPlayerApMaximum = data->apCurrentMaximum();
 
             emit playerLifeChange();
-
-            //ui->progressBarHitPoints->setMaximum(data->hpCurrentMaximum());
-            //ui->progressBarHitPoints->setValue(data->hpCurrent());
-            //ui->progressBarHitPoints->setFormat(QString::number(data->hpCurrent()) + "/" + QString::number(data->hpCurrentMaximum()));
-            //ui->progressBarManaPoints->setMaximum(data->mpCurrentMaximum());
-            //ui->progressBarManaPoints->setValue(data->mpCurrent());
-            //ui->progressBarActionPoints->setMaximum(data->apCurrentMaximum());
-            //ui->progressBarActionPoints->setValue(data->apCurrent());
         }
-//        else if (pkt->type() == QMUD::ClientDataType::BASIC_INFO)
-//        {
-//            QMUD::ClientDataBasicInfo *data = static_cast<QMUD::ClientDataBasicInfo*>(pkt);
+        else if (pkt->type() == QMUD::ClientDataType::BASIC_INFO)
+        {
+            QMUD::ClientDataBasicInfo *data = static_cast<QMUD::ClientDataBasicInfo*>(pkt);
 
-//            ui->labelChName->setText(data->name());
+            m_strPlayerName = data->name();
+            m_iPlayerLevel = data->level();
+            m_strPlayerClass = QMUD::classTypeToReadableString(data->classType());
+            m_strPlayerRace = QMUD::Race::toReadableString(data->race());
+            m_iPlayerExperience = data->experience();
+            m_iPlayerExperienceToLevelUp = data->experienceToLevelUp();
 
-//            //ui->labelChClass->setText(QMUD::classTypeToReadableString(data->classType()));
-//            ui->labelChLevel->setText(QString::number(data->level()));
-//            ui->progressBarChClassExp->setMaximum(static_cast<int>(data->experienceToLevelUp()));
-//            ui->progressBarChClassExp->setValue(static_cast<int>(data->experience()));
-//            ui->progressBarChClassExp->setVisible(true);
-
-//            m_bClientDataBasicInfoIsValid = true;
-//            m_clientDataBasicInfo = *data;
-
-//            ui->widgetCharInfo->setVisible(true);
-//            ui->widgetActionBar->setVisible(true);
-//            ui->widgetChat->setVisible(true);
-//        }
+            emit playerBasicInfoChange();
+        }
 //        else if (pkt->type() == QMUD::ClientDataType::TARGET_INFO)
 //        {
 //            QMUD::ClientDataTargetInfo *data = static_cast<QMUD::ClientDataTargetInfo*>(pkt);
@@ -796,6 +793,36 @@ QPoint ConnectionHandler::playerMapId() const
     return m_ptPlayerMapId;
 }
 
+QString ConnectionHandler::playerName() const
+{
+    return m_strPlayerName;
+}
+
+int ConnectionHandler::playerLevel() const
+{
+    return m_iPlayerLevel;
+}
+
+QString ConnectionHandler::playerClass() const
+{
+    return m_strPlayerClass;
+}
+
+QString ConnectionHandler::playerRace() const
+{
+    return m_strPlayerRace;
+}
+
+int ConnectionHandler::playerExperience() const
+{
+    return m_iPlayerExperience;
+}
+
+int ConnectionHandler::playerExperienceToLevelUp() const
+{
+    return m_iPlayerExperienceToLevelUp;
+}
+
 int ConnectionHandler::playerHpCurrent() const
 {
     return m_iPlayerHpCurrent;
@@ -804,6 +831,26 @@ int ConnectionHandler::playerHpCurrent() const
 int ConnectionHandler::playerHpMaximum() const
 {
     return m_iPlayerHpMaximum;
+}
+
+int ConnectionHandler::playerMpCurrent() const
+{
+    return m_iPlayerMpCurrent;
+}
+
+int ConnectionHandler::playerMpMaximum() const
+{
+    return m_iPlayerMpMaximum;
+}
+
+int ConnectionHandler::playerApCurrent() const
+{
+    return m_iPlayerApCurrent;
+}
+
+int ConnectionHandler::playerApMaximum() const
+{
+    return m_iPlayerApMaximum;
 }
 
 QStringList ConnectionHandler::npcs() const
