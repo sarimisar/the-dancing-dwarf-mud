@@ -19,6 +19,7 @@ public:
     QImage redCircle() const;
     QImage blueCircle() const;
     QImage orangeCircle() const;
+    QImage blueRectangle() const;
 
 private:
     ResourceManager();
@@ -46,6 +47,7 @@ private:
     QImage m_redCircle;
     QImage m_blueCircle;
     QImage m_orangeCircle;
+    QImage m_blueRectangle;
 
     QVector<LoadedMapData> m_vLoadedMaps;
 };

@@ -40,6 +40,10 @@ protected:
     QSGNode *updatePaintNode(QSGNode *oldNode, UpdatePaintNodeData *updatePaintNodeData) override;
     void geometryChanged(const QRectF &newGeometry, const QRectF &oldGeometry) override;
 
+    void mousePressEvent(QMouseEvent *event) override;
+    void hoverMoveEvent(QHoverEvent* event) override;
+    void mouseReleaseEvent(QMouseEvent *event) override;
+
     bool miniMap() const;
     void setMiniMap(bool miniMap);
 
@@ -79,6 +83,8 @@ private:
     QSGOpacityNode *m_ptrPcNpcNode;
     QSGSimpleTextureNode *m_ptrMapImageLevel1Node;
     QSGSimpleTextureNode *m_ptrPlayerNode;
+    QSGSimpleTextureNode *m_ptrRoomUnderMouseNode;
+    QSGSimpleTextureNode *m_ptrRoomSelectedNode;
 
     struct NpcNodeData
     {
@@ -107,6 +113,8 @@ private:
     bool m_bNeedUpdateMapTailSize;
     bool m_bNeedUpdateMapCenterPoint;
     bool m_bNeedUpdateNpcs;
+    bool m_bNeedUpdateRoomUnderMouse;
+    bool m_bNeedUpdateRoomSelected;
 
     bool m_bMiniMap;
     QColor m_backgroundColor;
@@ -115,6 +123,9 @@ private:
     QSize m_mapTailSize;
     QPoint m_mapId;
     QPoint m_mapCenterPoint;
+
+    QPoint m_roomUnderMouse;
+    QPoint m_roomSelected;
 
     QStringList m_vNpcs;
 

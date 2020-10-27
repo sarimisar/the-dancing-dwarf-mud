@@ -45,7 +45,7 @@ void ResourceManager::loadResources(FormLoadResources *dialog)
     QObject::connect(thread, &QThread::started, dialog, [&]() {
         qDebug() << "Load resources start... ";
 
-        int totalResources = 4;
+        int totalResources = 5;
         int currentResources = 0;
 
         emit dialog->status(0);
@@ -150,6 +150,25 @@ void ResourceManager::loadResources(FormLoadResources *dialog)
 
         emit dialog->status(totalResources == (++currentResources) ? 100 : static_cast<double>(currentResources)/totalResources * 100);
 
+        // -----------------------
+        // Blue rectangle
+        // -----------------------
+        {
+            m_blueRectangle = QImage(80, 80, QImage::Format_ARGB32);
+            m_blueRectangle.fill(Qt::transparent);
+
+            {
+                QPainter painter(&m_blueRectangle);
+                painter.setRenderHints(QPainter::SmoothPixmapTransform, true);
+                painter.setRenderHints(QPainter::Antialiasing, true);
+                painter.setBrush(QColor(80, 100, 250));
+                painter.setPen(Qt::NoPen);
+                painter.drawRect(0, 0, 80, 80);
+            }
+        }
+
+        emit dialog->status(totalResources == (++currentResources) ? 100 : static_cast<double>(currentResources)/totalResources * 100);
+
         emit dialog->complete();
 
         qDebug() << "Load resources done";
@@ -176,6 +195,11 @@ QImage ResourceManager::blueCircle() const
 QImage ResourceManager::orangeCircle() const
 {
     return m_orangeCircle;
+}
+
+QImage ResourceManager::blueRectangle() const
+{
+    return m_blueRectangle;
 }
 
 ResourceManager::ResourceManager()

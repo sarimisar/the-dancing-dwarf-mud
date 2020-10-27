@@ -24,6 +24,8 @@ MapQuickItem::MapQuickItem(QQuickItem *parent) :
     m_ptrPcNpcNode(Q_NULLPTR),
     m_ptrMapImageLevel1Node(Q_NULLPTR),
     m_ptrPlayerNode(Q_NULLPTR),
+    m_ptrRoomUnderMouseNode(Q_NULLPTR),
+    m_ptrRoomSelectedNode(Q_NULLPTR),
     m_bNeedUpdateMiniMap(true),
     m_bNeedUpdateGeometry(true),
     m_bNeedUpdateBackground(true),
@@ -33,6 +35,8 @@ MapQuickItem::MapQuickItem(QQuickItem *parent) :
     m_bNeedUpdateMapTailSize(true),
     m_bNeedUpdateMapCenterPoint(true),
     m_bNeedUpdateNpcs(true),
+    m_bNeedUpdateRoomUnderMouse(true),
+    m_bNeedUpdateRoomSelected(true),
     m_bMiniMap(false),
     m_rZoomFactor(1.0),
     m_iTailSizePx(80),
@@ -40,6 +44,8 @@ MapQuickItem::MapQuickItem(QQuickItem *parent) :
     m_mapCenterPoint(QPoint(24, 24))
 {
     setFlag(QQuickItem::ItemHasContents);
+    setAcceptedMouseButtons(Qt::AllButtons);
+    setAcceptHoverEvents(true);
 
     m_font.setPointSize(10);
     m_font.setFamily("Cooper Black");
@@ -108,6 +114,23 @@ QSGNode *MapQuickItem::updatePaintNode(QSGNode *oldNode, QQuickItem::UpdatePaint
         m_ptrMapImageLevel1Node = new QSGSimpleTextureNode();
         m_ptrMapImageLevel1Node->setFiltering(QSGTexture::Linear);
         m_ptrPcNpcNode->appendChildNode(m_ptrMapImageLevel1Node);
+
+        // Room selection
+        QSGOpacityNode *opacityNodeRoomUnderMouse  = new QSGOpacityNode();
+        opacityNodeRoomUnderMouse->setOpacity(0.1);
+        m_ptrRoomUnderMouseNode = new QSGSimpleTextureNode();
+        m_ptrRoomUnderMouseNode->setFiltering(QSGTexture::Linear);
+        m_ptrRoomUnderMouseNode->setTexture(window()->createTextureFromImage(ResourceManager::instance().blueRectangle()));
+        opacityNodeRoomUnderMouse->appendChildNode(m_ptrRoomUnderMouseNode);
+        m_ptrMapImageLevel1Node->appendChildNode(opacityNodeRoomUnderMouse);
+
+        QSGOpacityNode *opacityNodeRoomSelected  = new QSGOpacityNode();
+        opacityNodeRoomSelected->setOpacity(0.5);
+        m_ptrRoomSelectedNode = new QSGSimpleTextureNode();
+        m_ptrRoomSelectedNode->setFiltering(QSGTexture::Linear);
+        m_ptrRoomSelectedNode->setTexture(window()->createTextureFromImage(ResourceManager::instance().blueRectangle()));
+        opacityNodeRoomSelected->appendChildNode(m_ptrRoomSelectedNode);
+        m_ptrMapImageLevel1Node->appendChildNode(opacityNodeRoomSelected);
     }
 
     if (m_bNeedUpdateGeometry)
@@ -162,7 +185,6 @@ QSGNode *MapQuickItem::updatePaintNode(QSGNode *oldNode, QQuickItem::UpdatePaint
         m_ptrPlayerNode->setRect(windowCenterRect);
 
         m_bNeedUpdateZoomFactor = false;
-        m_bNeedUpdateMapCenterPoint = false;
         updateNpcsPosition = true;
     }
 
@@ -295,7 +317,74 @@ QSGNode *MapQuickItem::updatePaintNode(QSGNode *oldNode, QQuickItem::UpdatePaint
         }
     }
 
+    if (m_bNeedUpdateRoomSelected || m_bNeedUpdateMapCenterPoint)
+    {
+        if (!m_bMiniMap)
+        {
+            QSizeF imageSize = QSizeF(m_mapTailSize) * m_iTailSizePx * m_rZoomFactor;
+
+            qreal x = - (imageSize.width() - width()) / 2.0;
+            qreal y = - (imageSize.height() - height()) / 2.0;
+
+            QPointF centerPoint = (QPointF(m_mapCenterPoint * m_iTailSizePx)  +
+                    QPointF(m_iTailSizePx / 2.0, m_iTailSizePx / 2.0)) * m_rZoomFactor;
+
+            // Scift della mappa rispetto al centro voluto
+            x -= (centerPoint.x() - (imageSize.width() / 2.0));
+            y -= (centerPoint.y() - (imageSize.height() / 2.0));
+
+            QPointF position = (QPointF(m_roomSelected * m_iTailSizePx)) * m_rZoomFactor;
+
+            QRectF positionRect(x + position.x(),
+                                y + position.y(),
+                                m_iTailSizePx * m_rZoomFactor,
+                                m_iTailSizePx * m_rZoomFactor);
+
+            m_ptrRoomSelectedNode->setRect(positionRect);
+        }
+        else
+        {
+            m_ptrRoomSelectedNode->setRect(0, 0, 0, 0);
+        }
+
+        m_bNeedUpdateRoomSelected = false;
+    }
+
+    if (m_bNeedUpdateRoomUnderMouse || m_bNeedUpdateMapCenterPoint)
+    {
+        if (!m_bMiniMap)
+        {
+            QSizeF imageSize = QSizeF(m_mapTailSize) * m_iTailSizePx * m_rZoomFactor;
+
+            qreal x = - (imageSize.width() - width()) / 2.0;
+            qreal y = - (imageSize.height() - height()) / 2.0;
+
+            QPointF centerPoint = (QPointF(m_mapCenterPoint * m_iTailSizePx)  +
+                    QPointF(m_iTailSizePx / 2.0, m_iTailSizePx / 2.0)) * m_rZoomFactor;
+
+            // Scift della mappa rispetto al centro voluto
+            x -= (centerPoint.x() - (imageSize.width() / 2.0));
+            y -= (centerPoint.y() - (imageSize.height() / 2.0));
+
+            QPointF position = (QPointF(m_roomUnderMouse * m_iTailSizePx)) * m_rZoomFactor;
+
+            QRectF positionRect(x + position.x(),
+                                y + position.y(),
+                                m_iTailSizePx * m_rZoomFactor,
+                                m_iTailSizePx * m_rZoomFactor);
+
+            m_ptrRoomUnderMouseNode->setRect(positionRect);
+        }
+        else
+        {
+            m_ptrRoomUnderMouseNode->setRect(0, 0, 0, 0);
+        }
+
+        m_bNeedUpdateRoomUnderMouse = false;
+    }
+
     m_bNeedUpdateMiniMap = false;
+    m_bNeedUpdateMapCenterPoint = false;
 
 
     return root;
@@ -306,6 +395,54 @@ void MapQuickItem::geometryChanged(const QRectF &newGeometry, const QRectF &oldG
     if (newGeometry != oldGeometry)
     {
         m_bNeedUpdateGeometry = true;
+        update();
+    }
+}
+
+void MapQuickItem::mousePressEvent(QMouseEvent *event)
+{
+
+}
+
+void MapQuickItem::hoverMoveEvent(QHoverEvent* event)
+{
+    if (m_bMiniMap)
+        return;
+
+    auto pos = QPointF(event->pos());
+
+    pos -= QPointF(width() / 2.0, height() / 2.0);
+    pos /= m_iTailSizePx;
+
+    auto newRoom = m_mapCenterPoint + pos.toPoint();
+
+    if (newRoom != m_roomUnderMouse)
+    {
+        m_roomUnderMouse = newRoom;
+        m_bNeedUpdateRoomUnderMouse = true;
+
+        update();
+    }
+}
+
+void MapQuickItem::mouseReleaseEvent(QMouseEvent *event)
+{
+    if (m_bMiniMap)
+        return;
+
+    auto pos = QPointF(event->pos());
+
+    pos -= QPointF(width() / 2.0, height() / 2.0);
+    pos /= m_iTailSizePx;
+
+    auto newRoom = m_mapCenterPoint + pos.toPoint();
+
+    qDebug() << newRoom;
+    if (newRoom != m_roomSelected)
+    {
+        m_roomSelected = newRoom;
+        m_bNeedUpdateRoomSelected = true;
+
         update();
     }
 }
