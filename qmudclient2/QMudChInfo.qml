@@ -17,6 +17,8 @@ Item {
 
     property alias name: chName.text
 
+    property var qmudId: 999999999999
+
     Column
     {
         spacing: 3
@@ -30,6 +32,7 @@ Item {
 
             background: Rectangle {
                 color: "#BB343434"
+                border.color: "#BBA4A4A4"
                 radius: 5
             }
         }
@@ -80,6 +83,15 @@ Item {
                     Layout.fillHeight: true
                 }
             }
+        }
+    }
+
+    MouseArea {
+        anchors.fill: parent
+
+        onClicked: {
+            if (qmudId !== 999999999999)
+                connectionHandler.cmdTarget(qmudId)
         }
     }
 }

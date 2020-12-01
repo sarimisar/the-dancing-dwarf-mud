@@ -27,9 +27,13 @@ int main(int argc, char *argv[])
 
     QGuiApplication app(argc, argv);
 
+    qRegisterMetaType<QMUD::StaticIdType>("QMUD::StaticIdType");
+    qRegisterMetaType<QMUD::IdType>("QMUD::IdType");
+
     ConnectionHandler::declareQML();
     CharacterListItemModel::declareQML();
     MapQuickItem::declareQML();
+
 
     ConnectionHandler connectionHandler;
 

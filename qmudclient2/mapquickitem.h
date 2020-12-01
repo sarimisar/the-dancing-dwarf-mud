@@ -15,7 +15,7 @@ class MapQuickItem : public QQuickItem
 {
     Q_OBJECT
 
-    Q_PROPERTY(bool miniMap READ miniMap WRITE setMiniMap NOTIFY miniMapChange)
+    Q_PROPERTY(bool miniMap READ miniMap WRITE setMiniMap NOTIFY miniMapChanged)
 
     Q_PROPERTY(QColor background READ background WRITE setBackground NOTIFY backgroundChanged)
 
@@ -26,7 +26,7 @@ class MapQuickItem : public QQuickItem
     Q_PROPERTY(QSize mapTailSize READ mapTailSize WRITE setMapTailSize NOTIFY mapTailSizeChanged)
     Q_PROPERTY(QPoint mapCenterPoint READ mapCenterPoint WRITE setMapCenterPoint NOTIFY mapCenterPointChanged)
 
-    Q_PROPERTY(QStringList npcs READ npcs WRITE setNpcs NOTIFY npcsChange)
+    Q_PROPERTY(QStringList npcs READ npcs WRITE setNpcs NOTIFY npcsChanged)
 
 public:
     MapQuickItem(QQuickItem *parent = Q_NULLPTR);
@@ -35,6 +35,9 @@ public:
 
     static QString npcDataToString(quint64 id, int x, int y, QMUD::ClientDataRoomInfo::ChType type, QString name, QMUD::RaceType race);
     static void npcDataFromString(QString str, quint64& id, int& x, int& y, QMUD::ClientDataRoomInfo::ChType& type, QString& name, QMUD::RaceType &race);
+
+    Q_INVOKABLE void setSelectedRoom(const QPoint& room);
+    Q_INVOKABLE QPointF mapFromRoomPos(const QPoint& room);
 
 protected:
     QSGNode *updatePaintNode(QSGNode *oldNode, UpdatePaintNodeData *updatePaintNodeData) override;
@@ -69,14 +72,16 @@ protected:
     void setNpcs(QStringList npcs);
 
 signals:
-    void miniMapChange();
+    void miniMapChanged();
     void backgroundChanged();
     void zoomFactorChanged();
     void tailSizePxChanged();
     void mapIdChanged();
     void mapTailSizeChanged();
     void mapCenterPointChanged();
-    void npcsChange();
+    void npcsChanged();
+
+    void selectedRoomChanged(const QPoint& roomId);
 
 private:
     QSGSimpleTextureNode *m_ptrMapImageLevel0Node;

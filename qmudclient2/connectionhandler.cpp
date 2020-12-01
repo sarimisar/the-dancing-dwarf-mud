@@ -25,7 +25,15 @@ ConnectionHandler::ConnectionHandler(QObject *parent) :
     m_iPlayerMpCurrent(0),
     m_iPlayerMpMaximum(0),
     m_iPlayerApCurrent(0),
-    m_iPlayerApMaximum(0)
+    m_iPlayerApMaximum(0),
+    m_iSelectedPcId(QMUD::IdInvalid),
+    m_iSelectedPcLevel(0),
+    m_iSelectedPcHpCurrent(0),
+    m_iSelectedPcHpMaximum(0),
+    m_iSelectedPcMpCurrent(0),
+    m_iSelectedPcMpMaximum(0),
+    m_iSelectedPcApCurrent(0),
+    m_iSelectedPcApMaximum(0)
 {
     connect(m_ptrConnection, &Connection::connected, this, &ConnectionHandler::onConnected);
     connect(m_ptrConnection, &Connection::disconnected, this, &ConnectionHandler::onDisconnected);
@@ -83,6 +91,11 @@ void ConnectionHandler::cmdMoveUp()
 void ConnectionHandler::cmdMoveDown()
 {
     m_ptrConnection->send(QString("moved"));
+}
+
+void ConnectionHandler::cmdTarget(QMUD::StaticIdType id)
+{
+    m_ptrConnection->send(QString("target %1").arg(id));
 }
 
 bool ConnectionHandler::connectToHost()
@@ -267,34 +280,32 @@ void ConnectionHandler::onMessageReceived(QByteArray message)
 
             emit playerBasicInfoChange();
         }
-//        else if (pkt->type() == QMUD::ClientDataType::TARGET_INFO)
-//        {
-//            QMUD::ClientDataTargetInfo *data = static_cast<QMUD::ClientDataTargetInfo*>(pkt);
+        else if (pkt->type() == QMUD::ClientDataType::TARGET_INFO)
+        {
+            QMUD::ClientDataTargetInfo *data = static_cast<QMUD::ClientDataTargetInfo*>(pkt);
 
-//            if (data->name().isEmpty())
-//            {
-//                ui->widgetTargetInfo->setVisible(false);
-//                m_bClientDataTargetInfoIsValid = false;
-//                m_clientDataTargetInfo = QMUD::ClientDataTargetInfo();
-//            }
-//            else
-//            {
-//                ui->labelTargetName->setText(data->name());
-//                ui->labelTargetLevel->setText(QString::number(data->level()));
-//                ui->progressBarTargetHitPoints->setMaximum(data->hpCurrentMaximum());
-//                ui->progressBarTargetHitPoints->setValue(data->hpCurrent());
-//                ui->progressBarTargetHitPoints->setFormat(QString::number(data->hpCurrent()) + "/" + QString::number(data->hpCurrentMaximum()));
-//                ui->progressBarTargetManaPoints->setMaximum(data->mpCurrentMaximum());
-//                ui->progressBarTargetManaPoints->setValue(data->mpCurrent());
-//                ui->progressBarTargetActionPoints->setMaximum(data->apCurrentMaximum());
-//                ui->progressBarTargetActionPoints->setValue(data->apCurrent());
+            if (data->name().isEmpty())
+            {
+                m_iSelectedPcId = QMUD::IdInvalid;
+                m_strSelectedPcName.clear();
+            }
+            else
+            {
+                m_iSelectedPcId = data->id();
+                m_strSelectedPcName = data->name();
+                m_iSelectedPcLevel = data->level();
+                m_strSelectedPcClass = "";
+                m_strSelectedPcRace = "";
+                m_iSelectedPcHpCurrent = data->hpCurrent();
+                m_iSelectedPcHpMaximum = data->hpCurrentMaximum();
+                m_iSelectedPcMpCurrent = data->mpCurrent();
+                m_iSelectedPcMpMaximum = data->mpCurrentMaximum();
+                m_iSelectedPcApCurrent = data->apCurrent();
+                m_iSelectedPcApMaximum = data->apCurrentMaximum();
+            }
 
-//                m_bClientDataTargetInfoIsValid = true;
-//                m_clientDataTargetInfo = *data;
-
-//                ui->widgetTargetInfo->setVisible(true);
-//            }
-//        }
+            emit selectedPcChange();
+        }
 //        else if (pkt->type() == QMUD::ClientDataType::ACTION_LAG)
 //        {
 //            QMUD::ClientDataActionLag *data = static_cast<QMUD::ClientDataActionLag*>(pkt);
@@ -852,6 +863,62 @@ int ConnectionHandler::playerApMaximum() const
 {
     return m_iPlayerApMaximum;
 }
+
+QMUD::IdType ConnectionHandler::selectedPcId() const
+{
+    return m_iSelectedPcId;
+}
+
+QString ConnectionHandler::selectedPcName() const
+{
+    return m_strSelectedPcName;
+}
+
+int ConnectionHandler::selectedPcLevel() const
+{
+    return m_iSelectedPcLevel;
+}
+
+QString ConnectionHandler::selectedPcClass() const
+{
+    return m_strSelectedPcClass;
+}
+
+QString ConnectionHandler::selectedPcRace() const
+{
+    return m_strSelectedPcRace;
+}
+
+int ConnectionHandler::selectedPcHpCurrent() const
+{
+    return m_iSelectedPcHpCurrent;
+}
+
+int ConnectionHandler::selectedPcHpMaximum() const
+{
+    return m_iSelectedPcHpMaximum;
+}
+
+int ConnectionHandler::selectedPcMpCurrent() const
+{
+    return m_iSelectedPcMpCurrent;
+}
+
+int ConnectionHandler::selectedPcMpMaximum() const
+{
+    return m_iSelectedPcMpMaximum;
+}
+
+int ConnectionHandler::selectedPcApCurrent() const
+{
+    return m_iSelectedPcApCurrent;
+}
+
+int ConnectionHandler::selectedPcApMaximum() const
+{
+    return m_iSelectedPcApMaximum;
+}
+
 
 QStringList ConnectionHandler::npcs() const
 {

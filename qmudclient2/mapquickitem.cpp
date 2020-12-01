@@ -79,6 +79,29 @@ void MapQuickItem::npcDataFromString(QString str, quint64 &id, int &x, int &y, Q
     race = static_cast<QMUD::RaceType>(split[5].toInt());
 }
 
+void MapQuickItem::setSelectedRoom(const QPoint &room)
+{
+    qDebug() << room;
+
+    if (m_bMiniMap)
+        return;
+
+    if (room != m_roomSelected)
+    {
+        m_roomSelected = room;
+        m_bNeedUpdateRoomSelected = true;
+
+        update();
+
+        emit selectedRoomChanged(room);
+    }
+}
+
+QPointF MapQuickItem::mapFromRoomPos(const QPoint &room)
+{
+    return QPointF(room - m_mapCenterPoint) * m_iTailSizePx * m_rZoomFactor + QPointF(width() / 2.0, height() / 2.0);
+}
+
 QSGNode *MapQuickItem::updatePaintNode(QSGNode *oldNode, QQuickItem::UpdatePaintNodeData *updatePaintNodeData)
 {
     Q_UNUSED(updatePaintNodeData)
@@ -117,7 +140,7 @@ QSGNode *MapQuickItem::updatePaintNode(QSGNode *oldNode, QQuickItem::UpdatePaint
 
         // Room selection
         QSGOpacityNode *opacityNodeRoomUnderMouse  = new QSGOpacityNode();
-        opacityNodeRoomUnderMouse->setOpacity(0.1);
+        opacityNodeRoomUnderMouse->setOpacity(0.0);
         m_ptrRoomUnderMouseNode = new QSGSimpleTextureNode();
         m_ptrRoomUnderMouseNode->setFiltering(QSGTexture::Linear);
         m_ptrRoomUnderMouseNode->setTexture(window()->createTextureFromImage(ResourceManager::instance().blueRectangle()));
@@ -409,7 +432,7 @@ void MapQuickItem::hoverMoveEvent(QHoverEvent* event)
     if (m_bMiniMap)
         return;
 
-    auto pos = QPointF(event->pos());
+    auto pos = QPointF(event->pos()) / m_rZoomFactor;
 
     pos -= QPointF(width() / 2.0, height() / 2.0);
     pos /= m_iTailSizePx;
@@ -430,20 +453,21 @@ void MapQuickItem::mouseReleaseEvent(QMouseEvent *event)
     if (m_bMiniMap)
         return;
 
-    auto pos = QPointF(event->pos());
+    auto pos = QPointF(event->pos()) / m_rZoomFactor;
 
     pos -= QPointF(width() / 2.0, height() / 2.0);
     pos /= m_iTailSizePx;
 
     auto newRoom = m_mapCenterPoint + pos.toPoint();
 
-    qDebug() << newRoom;
     if (newRoom != m_roomSelected)
     {
         m_roomSelected = newRoom;
         m_bNeedUpdateRoomSelected = true;
 
         update();
+
+        emit selectedRoomChanged(newRoom);
     }
 }
 
@@ -461,7 +485,7 @@ void MapQuickItem::setMiniMap(bool miniMap)
 
         update();
 
-        emit miniMapChange();
+        emit miniMapChanged();
     }
 }
 
@@ -587,7 +611,7 @@ void MapQuickItem::setNpcs(QStringList npcs)
 
         update();
 
-        emit npcsChange();
+        emit npcsChanged();
     }
 }
 

@@ -37,6 +37,18 @@ class ConnectionHandler : public QObject
     Q_PROPERTY(int playerApCurrent READ playerApCurrent NOTIFY playerLifeChange)
     Q_PROPERTY(int playerApMaximum READ playerApMaximum NOTIFY playerLifeChange)
 
+    Q_PROPERTY(QMUD::IdType selectedPcId READ selectedPcId NOTIFY selectedPcChange)
+    Q_PROPERTY(QString selectedPcName READ selectedPcName NOTIFY selectedPcChange)
+    Q_PROPERTY(int selectedPcLevel READ selectedPcLevel NOTIFY selectedPcChange)
+    Q_PROPERTY(QString selectedPcClass READ selectedPcClass NOTIFY selectedPcChange)
+    Q_PROPERTY(QString selectedPcRace READ selectedPcRace NOTIFY selectedPcChange)
+    Q_PROPERTY(int selectedPcHpCurrent READ selectedPcHpCurrent NOTIFY selectedPcChange)
+    Q_PROPERTY(int selectedPcHpMaximum READ selectedPcHpMaximum NOTIFY selectedPcChange)
+    Q_PROPERTY(int selectedPcMpCurrent READ selectedPcMpCurrent NOTIFY selectedPcChange)
+    Q_PROPERTY(int selectedPcMpMaximum READ selectedPcMpMaximum NOTIFY selectedPcChange)
+    Q_PROPERTY(int selectedPcApCurrent READ selectedPcApCurrent NOTIFY selectedPcChange)
+    Q_PROPERTY(int selectedPcApMaximum READ selectedPcApMaximum NOTIFY selectedPcChange)
+
     Q_PROPERTY(QStringList npcs READ npcs NOTIFY npcsChange)
 
 public:
@@ -63,6 +75,7 @@ public:
     Q_INVOKABLE void cmdMoveEast();
     Q_INVOKABLE void cmdMoveUp();
     Q_INVOKABLE void cmdMoveDown();
+    Q_INVOKABLE void cmdTarget(QMUD::StaticIdType id);
 
 public slots:
     bool connectToHost();
@@ -75,6 +88,7 @@ signals:
     void playerLifeChange();
     void playerPositionChange();
     void playerMapIdChange();
+    void selectedPcChange();
     void npcsChange();
 
 private slots:
@@ -104,6 +118,18 @@ private slots:
     int playerMpMaximum() const;
     int playerApCurrent() const;
     int playerApMaximum() const;
+
+    QMUD::IdType selectedPcId() const;
+    QString selectedPcName() const;
+    int selectedPcLevel() const;
+    QString selectedPcClass() const;
+    QString selectedPcRace() const;
+    int selectedPcHpCurrent() const;
+    int selectedPcHpMaximum() const;
+    int selectedPcMpCurrent() const;
+    int selectedPcMpMaximum() const;
+    int selectedPcApCurrent() const;
+    int selectedPcApMaximum() const;
 
     QStringList npcs() const;
 
@@ -138,6 +164,20 @@ private:
     int m_iPlayerApCurrent;
     int m_iPlayerApMaximum;
 
+    // Selected PC info
+    QMUD::IdType m_iSelectedPcId;
+    QString m_strSelectedPcName;
+    int m_iSelectedPcLevel;
+    QString m_strSelectedPcClass;
+    QString m_strSelectedPcRace;
+    int m_iSelectedPcHpCurrent;
+    int m_iSelectedPcHpMaximum;
+    int m_iSelectedPcMpCurrent;
+    int m_iSelectedPcMpMaximum;
+    int m_iSelectedPcApCurrent;
+    int m_iSelectedPcApMaximum;
+
+    // Npcs info
     QStringList m_vNpcs;
 };
 
