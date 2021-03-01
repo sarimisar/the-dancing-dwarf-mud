@@ -9,6 +9,14 @@ Window {
     height: 600
     title: qsTr("The Dancing Dwarf - v 0.1")
 
+
+    DialogCharacterCreation {
+        id: chCreationDialog
+
+        modal: true
+        anchors.centerIn: parent
+    }
+
     Item {
         id: stack
         anchors.fill: parent

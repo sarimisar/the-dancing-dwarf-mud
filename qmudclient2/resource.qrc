@@ -1,5 +1,11 @@
 <RCC>
     <qresource prefix="/images">
         <file>images/tmp_map.png</file>
+        <file>images/classes/barbarian.png</file>
+        <file>images/classes/barbarian.svg</file>
+        <file>images/classes/mage.png</file>
+        <file>images/classes/mage.svg</file>
+        <file>images/classes/warrior.png</file>
+        <file>images/classes/warrior.svg</file>
     </qresource>
 </RCC>

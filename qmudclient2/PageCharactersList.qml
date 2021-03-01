@@ -1,5 +1,5 @@
-import QtQuick 2.12
-import QtQuick.Controls 2.12
+import QtQuick 2.15
+import QtQuick.Controls 2.15
 import QtQuick.Layouts 1.12
 
 import QMudEnums 1.0
@@ -99,8 +99,7 @@ Item {
 
             KeyNavigation.tab: btnConnect
 
-            onClicked: {
-            }
+            onClicked: chCreationDialog.open()
         }
     }
 }

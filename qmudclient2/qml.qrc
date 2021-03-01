@@ -9,5 +9,6 @@
         <file>PageInGame.qml</file>
         <file>QMudProgressBar.qml</file>
         <file>QMudChInfo.qml</file>
+        <file>DialogCharacterCreation.qml</file>
     </qresource>
 </RCC>
