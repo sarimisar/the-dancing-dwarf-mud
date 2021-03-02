@@ -23,7 +23,6 @@
 #include <QHash>
 
 #define QMUD_GLOBAL_STATUS_DURATION_INFINITE                    (INT_MAX)
-#define QMUD_GLOBAL_CH_NUMBER_OF_STATISTICS_POINT               26
 
 
 namespace QMUD

@@ -13,7 +13,7 @@ FocusScope {
 
     RoundButton {
         id: control
-        radius: 10
+        radius: 5
         anchors.fill: parent
 
         font.pointSize: 12

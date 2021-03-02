@@ -58,6 +58,14 @@ void ConnectionHandler::cmdSignin(QString username, QString password)
     m_ptrConnection->send(QString("signin %1 %2").arg(username).arg(password));
 }
 
+void ConnectionHandler::cmdChCreate(QString name, int race, int chClass, int sex)
+{
+    m_ptrConnection->send(QString("ch_create %1 %2 %3 %4").arg(name)
+                          .arg(QMUD::classTypeToString(static_cast<QMUD::ClassType>(chClass)))
+                          .arg(QMUD::Race::toString(static_cast<QMUD::RaceType>(race)))
+                          .arg(QMUD::sexTypeToString(static_cast<QMUD::SexType>(sex))));
+}
+
 void ConnectionHandler::cmdConnect(QString chName)
 {
     m_ptrConnection->send(QString("ch_connect %1").arg(chName));
@@ -96,6 +104,11 @@ void ConnectionHandler::cmdMoveDown()
 void ConnectionHandler::cmdTarget(QMUD::StaticIdType id)
 {
     m_ptrConnection->send(QString("target %1").arg(id));
+}
+
+void ConnectionHandler::cmdAction(QString action)
+{
+    m_ptrConnection->send(QString(action));
 }
 
 bool ConnectionHandler::connectToHost()
@@ -178,8 +191,14 @@ void ConnectionHandler::onMessageReceived(QByteArray message)
                 emit lastMessageChange();
                 break;
 
-            case QMUD::ClientDataMessage::Message::ERROR_CH_CREATION_FAILED_CONTACT_ADMINISTRATOR: break;
+            case QMUD::ClientDataMessage::Message::ERROR_CH_CREATION_FAILED_CONTACT_ADMINISTRATOR:
+                m_strLastErrorMessage = tr("Creazione fallita, contatta un amministratore");
+                emit lastMessageChange();
+                break;
+
             case QMUD::ClientDataMessage::Message::ERROR_CH_NAME_FAILED:
+                m_strLastErrorMessage = tr("Nome del personaggio non disponibile");
+                emit lastMessageChange();
                 break;
 
             case QMUD::ClientDataMessage::Message::INFO_SIGNIN_OK:
@@ -187,7 +206,10 @@ void ConnectionHandler::onMessageReceived(QByteArray message)
                 emit lastMessageChange();
                 break;
 
-            case QMUD::ClientDataMessage::Message::INFO_CH_CREATION_OK: break;
+            case QMUD::ClientDataMessage::Message::INFO_CH_CREATION_OK:
+                m_strLastInfoMessage = tr("Creazione del personaggio riuscita");
+                emit lastMessageChange();
+                break;
 
             case QMUD::ClientDataMessage::Message::CONN_STATUS_IDLE:
             case QMUD::ClientDataMessage::Message::CONN_STATUS_LOGIN:

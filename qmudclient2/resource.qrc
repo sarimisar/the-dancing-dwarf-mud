@@ -7,5 +7,6 @@
         <file>images/classes/mage.svg</file>
         <file>images/classes/warrior.png</file>
         <file>images/classes/warrior.svg</file>
+        <file>images/actions/battle.svg</file>
     </qresource>
 </RCC>

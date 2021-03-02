@@ -4,6 +4,8 @@ import QtQuick.Layouts 1.12
 import QtGraphicalEffects 1.0
 import QtQml 2.12
 
+import "controls"
+
 import qmudmapquickitem.qml 1.0
 
 
@@ -310,5 +312,24 @@ Item {
         samples: shadowSamples
         color: "#80000000"
         source: experienceBar
+    }
+
+    QMudToolBar {
+        height: 50
+        count: 10
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.bottom: parent.bottom
+        anchors.bottomMargin: 20
+
+        QMudToolButton {
+            width: 50
+            height: 50
+            colorKey: "action"
+            icon: "qrc:/images/images/actions/battle.svg"
+
+            onClicked: {
+                connectionHandler.cmdAction("attack")
+            }
+        }
     }
 }

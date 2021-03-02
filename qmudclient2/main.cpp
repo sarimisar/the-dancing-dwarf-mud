@@ -34,11 +34,16 @@ int main(int argc, char *argv[])
     CharacterListItemModel::declareQML();
     MapQuickItem::declareQML();
 
+    qRegisterMetaType<QMUD::IdType>("QMUD::IdType");
+    qRegisterMetaType<QMUD::SexType>("QMUD::SexType");
+    qRegisterMetaType<QMUD::RaceType>("QMUD::RaceType");
+    qRegisterMetaType<QMUD::ClassType>("QMUD::ClassType");
+    qRegisterMetaType<QMUD::DamageType>("QMUD::DamageType");
 
     ConnectionHandler connectionHandler;
 
     QQmlApplicationEngine engine;
-    const QUrl url(QStringLiteral("qrc:/main.qml"));
+    const QUrl url(QStringLiteral("qrc:/qml/main.qml"));
     QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,
                      &app, [url](QObject *obj, const QUrl &objUrl) {
         if (!obj && url == objUrl)
@@ -46,6 +51,11 @@ int main(int argc, char *argv[])
     }, Qt::QueuedConnection);
 
     engine.rootContext()->setContextProperty("connectionHandler", &connectionHandler);
+
+    QMUD::sexTypeJsRegistration(engine);
+    QMUD::raceTypeJsRegistration(engine);
+    QMUD::classTypeJsRegistration(engine);
+    QMUD::damageTypeJsRegistration(engine);
 
     connectionHandler.declareQMLContext(&engine);
 

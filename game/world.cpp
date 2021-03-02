@@ -777,7 +777,7 @@ void World::onCommandReceived(PlayerConnection *conn, Player* player, QString cm
             return;
         }
 
-        if (list[0].compare("ch_create", Qt::CaseInsensitive) == 0 && list.size() != 10)
+        if (list[0].compare("ch_create", Qt::CaseInsensitive) == 0 && list.size() != 5)
         {
             conn->sendMessage(QMUD::ClientDataMessage::Message::ERROR_GENERIC);
             return;
@@ -832,11 +832,6 @@ void World::onCommandReceived(PlayerConnection *conn, Player* player, QString cm
             QString strChClass = list[2].toLower();
             QString strChRace = list[3].toLower();
             QString strChSex = list[4].toLower();
-            QString strChInt = list[5].toLower();
-            QString strChWis = list[6].toLower();
-            QString strChCon = list[7].toLower();
-            QString strChStr = list[8].toLower();
-            QString strChDex = list[9].toLower();
 
             if (!checkPlayerAndCharacterName(characterName))
             {
@@ -869,44 +864,27 @@ void World::onCommandReceived(PlayerConnection *conn, Player* player, QString cm
                 return;
             }
 
-            int maxInt = 18;
-            int maxWis = 18;
-            int maxStr = 18;
-            int maxCon = 18;
-            int maxDex = 18;
+            int classInt = 18;
+            int classWis = 18;
+            int classStr = 18;
+            int classCon = 18;
+            int classDex = 18;
 
-            QMUD::classTypeToMaxStatistics(chClass, maxInt, maxWis, maxStr, maxCon, maxDex);
+            QMUD::classTypeToMaxStatistics(chClass, classInt, classWis, classStr, classCon, classDex);
 
-            int chInt = strChInt.toInt();
-            int chWis = strChWis.toInt();
-            int chCon = strChCon.toInt();
-            int chStr = strChStr.toInt();
-            int chDex = strChDex.toInt();
-
-            if (chInt < QMUD::Race::basePCInt(chRace) ||
-                chWis < QMUD::Race::basePCWis(chRace) ||
-                chCon < QMUD::Race::basePCCon(chRace) ||
-                chStr < QMUD::Race::basePCStr(chRace) ||
-                chDex < QMUD::Race::basePCDex(chRace) ||
-                chInt > maxInt ||
-                chWis > maxWis ||
-                chCon > maxCon ||
-                chStr > maxStr ||
-                chDex > maxDex ||
-                (chInt + chWis + chCon + chStr + chDex - QMUD_GLOBAL_CH_NUMBER_OF_STATISTICS_POINT -
-                 QMUD::Race::basePCInt(chRace) - QMUD::Race::basePCWis(chRace) - QMUD::Race::basePCCon(chRace) - QMUD::Race::basePCStr(chRace) - QMUD::Race::basePCDex(chRace)) != 0)
-            {
-                conn->sendMessage(QMUD::ClientDataMessage::Message::ERROR_CH_CREATION_FAILED_CONTACT_ADMINISTRATOR);
-                return;
-            }
+            classInt += QMUD::Race::basePCInt(chRace);
+            classWis += QMUD::Race::basePCWis(chRace);
+            classStr += QMUD::Race::basePCCon(chRace);
+            classCon += QMUD::Race::basePCStr(chRace);
+            classDex += QMUD::Race::basePCDex(chRace);
 
             QMUD::FileOpStatus status;
 
             // Creo il character
             if (!PcCharacter::createCharacter(m_dirCharacters, conn, player, characterName, chSex,
                                               chClass, chRace,
-                                              chInt, chWis, chStr,
-                                              chCon, chDex, status, true))
+                                              classInt, classWis, classStr, classCon, classDex,
+                                              status, true))
             {
                 if (status != QMUD::FileOpStatus::FILE_OP_ERROR_FILE_ALREADY_EXISTS)
                     GLOBAL_CRITICAL(tr("Creazione del character %1 fallita: %2").arg(characterName).arg(static_cast<int>(status)));

@@ -68,6 +68,7 @@ public:
     Q_INVOKABLE void clearMessages();
     Q_INVOKABLE void cmdLogin(QString username, QString password);
     Q_INVOKABLE void cmdSignin(QString username, QString password);
+    Q_INVOKABLE void cmdChCreate(QString name, int race, int chClass, int sex);
     Q_INVOKABLE void cmdConnect(QString chName);
     Q_INVOKABLE void cmdMoveNorth();
     Q_INVOKABLE void cmdMoveSouth();
@@ -76,6 +77,7 @@ public:
     Q_INVOKABLE void cmdMoveUp();
     Q_INVOKABLE void cmdMoveDown();
     Q_INVOKABLE void cmdTarget(QMUD::StaticIdType id);
+    Q_INVOKABLE void cmdAction(QString action);
 
 public slots:
     bool connectToHost();

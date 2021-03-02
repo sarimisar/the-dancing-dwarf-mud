@@ -1,14 +1,18 @@
 <RCC>
     <qresource prefix="/">
-        <file>main.qml</file>
-        <file>QMudTextEntry.qml</file>
-        <file>QMudLabel.qml</file>
-        <file>QMudButton.qml</file>
-        <file>PageLogin.qml</file>
-        <file>PageCharactersList.qml</file>
-        <file>PageInGame.qml</file>
-        <file>QMudProgressBar.qml</file>
-        <file>QMudChInfo.qml</file>
-        <file>DialogCharacterCreation.qml</file>
+        <file>qml/DialogCharacterCreation.qml</file>
+        <file>qml/main.qml</file>
+        <file>qml/PageCharactersList.qml</file>
+        <file>qml/PageInGame.qml</file>
+        <file>qml/PageLogin.qml</file>
+        <file>qml/controls/QMudButton.qml</file>
+        <file>qml/controls/QMudChInfo.qml</file>
+        <file>qml/controls/QMudClient.pro</file>
+        <file>qml/controls/QMudLabel.qml</file>
+        <file>qml/controls/QMudProgressBar.qml</file>
+        <file>qml/controls/QMudTextEntry.qml</file>
+        <file>qml/controls/QMudComboBox.qml</file>
+        <file>qml/controls/QMudToolButton.qml</file>
+        <file>qml/controls/QMudToolBar.qml</file>
     </qresource>
 </RCC>
